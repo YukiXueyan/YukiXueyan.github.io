@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>CSS 选择器世界 | yukiXueyan</title>
+  <meta name="description" content="1 概述1.1为什么CSS选择器很强CSS为样式服务，重表现，轻逻辑。 1.2CSS选择器世界的一些基本概念1.2.1选择器、选择符、伪类和伪元素选择器： 是CSS语句块前的标签、类名等，如body&amp;#123;font:menu&amp;#125;中的body 选择符：后代选择符空格()，子选择符箭头(&gt;)，相邻兄弟选择符加号(+)，随后兄弟选择符弯弯(~)，列选择符双管道(||)。 （详见第4章）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS 选择器世界">
+<meta property="og:url" content="http://example.com/2021/02/08/CSS%E9%80%89%E6%8B%A9%E5%99%A8%E4%B8%96%E7%95%8C/index.html">
+<meta property="og:site_name" content="邱雪雁的blog">
+<meta property="og:description" content="1 概述1.1为什么CSS选择器很强CSS为样式服务，重表现，轻逻辑。 1.2CSS选择器世界的一些基本概念1.2.1选择器、选择符、伪类和伪元素选择器： 是CSS语句块前的标签、类名等，如body&amp;#123;font:menu&amp;#125;中的body 选择符：后代选择符空格()，子选择符箭头(&gt;)，相邻兄弟选择符加号(+)，随后兄弟选择符弯弯(~)，列选择符双管道(||)。 （详见第4章）">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-02-08T02:19:29.000Z">
+<meta property="article:modified_time" content="2021-02-18T07:19:30.863Z">
+<meta property="article:author" content="YukiXueyan">
+<meta property="article:tag" content="CSS">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="读书笔记">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://example.com/2021/02/08/CSS%E9%80%89%E6%8B%A9%E5%99%A8%E4%B8%96%E7%95%8C/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="邱雪雁的blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/YukiXueyan" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">YukiXueyan</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">一只前端咸鱼酱</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> scu, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/YukiXueyan" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/android/">android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%B7%E9%A2%98/">刷题</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/">学习日记</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Diary/" rel="tag">Diary</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/" rel="tag">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%B7%E9%A2%98/" rel="tag">刷题</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag">读书笔记</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/CSS/" style="font-size: 13.75px;">CSS</a> <a href="/tags/Diary/" style="font-size: 13.25px;">Diary</a> <a href="/tags/ES6/" style="font-size: 13px;">ES6</a> <a href="/tags/Git/" style="font-size: 13px;">Git</a> <a href="/tags/JavaScript/" style="font-size: 13.5px;">JavaScript</a> <a href="/tags/LeetCode/" style="font-size: 13px;">LeetCode</a> <a href="/tags/Vue/" style="font-size: 13px;">Vue</a> <a href="/tags/android/" style="font-size: 13px;">android</a> <a href="/tags/blog/" style="font-size: 13px;">blog</a> <a href="/tags/hexo/" style="font-size: 13px;">hexo</a> <a href="/tags/%E5%88%B7%E9%A2%98/" style="font-size: 13px;">刷题</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 13px;">正则表达式</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 13px;">计算机网络</a> <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 13.5px;">读书笔记</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 13px;">随笔</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">12</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/05/04/hexo%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/" class="title">hexo主题推荐</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-05-04T11:22:49.000Z" itemprop="datePublished">2021-05-04</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/android/">android</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/05/04/%E3%80%90Android%E3%80%91%E4%BD%BF%E7%94%A8recyclerView-adapter%E5%AE%9E%E7%8E%B0%E6%BB%91%E5%8A%A8%E5%B8%83%E5%B1%80%EF%BC%8C%E5%B9%B6%E6%B7%BB%E5%8A%A0%E7%82%B9%E5%87%BB%E5%92%8C%E9%95%BF%E6%8C%89%E4%BA%8B%E4%BB%B6-md/" class="title">【Android】使用recyclerView+adapter实现滑动布局，并添加点击和长按事件.md</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-05-04T05:08:26.000Z" itemprop="datePublished">2021-05-04</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/03/31/0331%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/" class="title">0331面试总结</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-03-31T09:39:25.000Z" itemprop="datePublished">2021-03-31</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/03/21/%E5%9B%BE%E8%A7%A3HTTP/" class="title">图解HTTP</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-03-21T13:47:19.000Z" itemprop="datePublished">2021-03-21</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/03/15/ES6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="title">ES6学习笔记</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-03-15T12:58:45.000Z" itemprop="datePublished">2021-03-15</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">1 概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1%E4%B8%BA%E4%BB%80%E4%B9%88CSS%E9%80%89%E6%8B%A9%E5%99%A8%E5%BE%88%E5%BC%BA"><span class="toc-number">1.1.</span> <span class="toc-text">1.1为什么CSS选择器很强</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2CSS%E9%80%89%E6%8B%A9%E5%99%A8%E4%B8%96%E7%95%8C%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.2.</span> <span class="toc-text">1.2CSS选择器世界的一些基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1%E9%80%89%E6%8B%A9%E5%99%A8%E3%80%81%E9%80%89%E6%8B%A9%E7%AC%A6%E3%80%81%E4%BC%AA%E7%B1%BB%E5%92%8C%E4%BC%AA%E5%85%83%E7%B4%A0"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.2.1选择器、选择符、伪类和伪元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2CSS%E9%80%89%E6%8B%A9%E5%99%A8%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">1.2.2.</span> <span class="toc-text">1.2.2CSS选择器的作用域</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-3-CSS%E9%80%89%E6%8B%A9%E5%99%A8%E7%9A%84%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4"><span class="toc-number">1.2.3.</span> <span class="toc-text">1.2.3 CSS选择器的命名空间</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3%E6%97%A0%E6%95%88CSS%E9%80%89%E6%8B%A9%E5%99%A8%E7%89%B9%E6%80%A7%E4%B8%8E%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8"><span class="toc-number">1.3.</span> <span class="toc-text">1.3无效CSS选择器特性与实际应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-CSS%E9%80%89%E6%8B%A9%E5%99%A8%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-number">2.</span> <span class="toc-text">2 CSS选择器的优先级</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1CSS%E4%BC%98%E5%85%88%E7%BA%A7%E8%A7%84%E5%88%99%E6%A6%82%E8%A7%88"><span class="toc-number">2.1.</span> <span class="toc-text">2.1CSS优先级规则概览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2%E6%B7%B1%E5%85%A5CSS%E9%80%89%E6%8B%A9%E5%99%A8%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-number">2.2.</span> <span class="toc-text">2.2深入CSS选择器优先级</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-CSS%E9%80%89%E6%8B%A9%E5%99%A8%E4%BC%98%E5%85%88%E7%BA%A7%E7%9A%84%E8%AE%A1%E7%AE%97%E8%A7%84%E5%88%99"><span class="toc-number">2.2.1.</span> <span class="toc-text">2.2.1 CSS选择器优先级的计算规则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-2-256%E4%B8%AA%E9%80%89%E6%8B%A9%E5%99%A8%E7%9A%84%E8%B6%8A%E7%BA%A7%E7%8E%B0%E8%B1%A1"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.2.2 256个选择器的越级现象</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-CSS%E9%80%89%E6%8B%A9%E5%99%A8%E7%9A%84%E5%91%BD%E5%90%8D"><span class="toc-number">3.</span> <span class="toc-text">3 CSS选择器的命名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1CSS%E9%80%89%E6%8B%A9%E5%99%A8%E6%98%AF%E5%90%A6%E5%8C%BA%E5%88%86%E5%A4%A7%E5%B0%8F%E5%86%99"><span class="toc-number">3.1.</span> <span class="toc-text">3.1CSS选择器是否区分大小写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2CSS%E9%80%89%E6%8B%A9%E5%99%A8%E5%91%BD%E5%90%8D%E7%9A%84%E5%90%88%E6%B3%95%E6%80%A7"><span class="toc-number">3.2.</span> <span class="toc-text">3.2CSS选择器命名的合法性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3CSS%E9%80%89%E6%8B%A9%E5%99%A8%E7%9A%84%E5%91%BD%E5%90%8D%E6%98%AF%E4%B8%80%E4%B8%AA%E5%93%B2%E5%AD%A6%E9%97%AE%E9%A2%98"><span class="toc-number">3.3.</span> <span class="toc-text">3.3CSS选择器的命名是一个哲学问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-1%E9%95%BF%E5%91%BD%E5%90%8D%E8%BF%98%E6%98%AF%E7%9F%AD%E5%91%BD%E5%90%8D"><span class="toc-number">3.3.1.</span> <span class="toc-text">3.3.1长命名还是短命名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-2%E5%8D%95%E5%91%BD%E5%90%8D%E8%BF%98%E6%98%AF%E7%BB%84%E5%90%88%E5%91%BD%E5%90%8D"><span class="toc-number">3.3.2.</span> <span class="toc-text">3.3.2单命名还是组合命名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-3%E9%9D%A2%E5%90%91%E5%B1%9E%E6%80%A7%E7%9A%84%E5%91%BD%E5%90%8D%E5%92%8C%E9%9D%A2%E5%90%91%E8%AF%AD%E4%B9%89%E7%9A%84%E5%91%BD%E5%90%8D"><span class="toc-number">3.3.3.</span> <span class="toc-text">3.3.3面向属性的命名和面向语义的命名</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4CSS%E9%80%89%E6%8B%A9%E5%99%A8%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="toc-number">3.4.</span> <span class="toc-text">3.4CSS选择器设计的最佳实践</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-1%E4%B8%8D%E8%A6%81%E4%BD%BF%E7%94%A8ID%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">3.4.1.</span> <span class="toc-text">3.4.1不要使用ID选择器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-2%E4%B8%8D%E8%A6%81%E5%B5%8C%E5%A5%97%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">3.4.2.</span> <span class="toc-text">3.4.2不要嵌套选择器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-3%E4%B8%8D%E8%A6%81%E6%AD%A7%E8%A7%86%E9%9D%A2%E5%90%91%E5%B1%9E%E6%80%A7%E7%9A%84%E5%91%BD%E5%90%8D"><span class="toc-number">3.4.3.</span> <span class="toc-text">3.4.3不要歧视面向属性的命名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-4%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8%E7%8A%B6%E6%80%81%E7%B1%BB%E5%90%8D"><span class="toc-number">3.4.4.</span> <span class="toc-text">3.4.4正确使用状态类名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-5%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E6%B1%87%E6%80%BB"><span class="toc-number">3.4.5.</span> <span class="toc-text">3.4.5最佳实践汇总</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-CSS%E9%80%89%E6%8B%A9%E7%AC%A6"><span class="toc-number">4.</span> <span class="toc-text">4 CSS选择符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1%E5%90%8E%E4%BB%A3%E9%80%89%E6%8B%A9%E7%AC%A6%E7%A9%BA%E6%A0%BC"><span class="toc-number">4.1.</span> <span class="toc-text">4.1后代选择符空格( )</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-1%E5%AF%B9CSS%E5%90%8E%E4%BB%A3%E9%80%89%E6%8B%A9%E7%AC%A6%E5%8F%AF%E8%83%BD%E9%94%99%E8%AF%AF%E7%9A%84%E8%AE%A4%E8%AF%86"><span class="toc-number">4.1.1.</span> <span class="toc-text">4.1.1对CSS后代选择符可能错误的认识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-2%E5%AF%B9JavaScript%E4%B8%AD%E5%90%8E%E4%BB%A3%E9%80%89%E6%8B%A9%E7%AC%A6%E5%8F%AF%E8%83%BD%E9%94%99%E8%AF%AF%E7%9A%84%E8%AE%A4%E8%AF%86"><span class="toc-number">4.1.2.</span> <span class="toc-text">4.1.2对JavaScript中后代选择符可能错误的认识</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2%E5%AD%90%E9%80%89%E6%8B%A9%E7%AC%A6%E7%AE%AD%E5%A4%B4-gt"><span class="toc-number">4.2.</span> <span class="toc-text">4.2子选择符箭头(&gt;)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-1%E5%AD%90%E9%80%89%E6%8B%A9%E7%AC%A6%E5%92%8C%E5%90%8E%E4%BB%A3%E9%80%89%E6%8B%A9%E7%AC%A6%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">4.2.1.</span> <span class="toc-text">4.2.1子选择符和后代选择符的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-2%E9%80%82%E5%90%88%E4%BD%BF%E7%94%A8%E5%AD%90%E9%80%89%E6%8B%A9%E7%AC%A6%E7%9A%84%E5%9C%BA%E6%99%AF"><span class="toc-number">4.2.2.</span> <span class="toc-text">4.2.2适合使用子选择符的场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3%E7%9B%B8%E9%82%BB%E5%85%84%E5%BC%9F%E9%80%89%E6%8B%A9%E7%AC%A6%E5%8A%A0%E5%8F%B7"><span class="toc-number">4.3.</span> <span class="toc-text">4.3相邻兄弟选择符加号(+)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-1%E7%9B%B8%E9%82%BB%E5%85%84%E5%BC%9F%E9%80%89%E6%8B%A9%E7%AC%A6%E7%9A%84%E7%9B%B8%E5%85%B3%E7%BB%86%E8%8A%82"><span class="toc-number">4.3.1.</span> <span class="toc-text">4.3.1相邻兄弟选择符的相关细节</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-2%E5%AE%9E%E7%8E%B0%E7%B1%BB%E4%BC%BC-first-child%E7%9A%84%E6%95%88%E6%9E%9C"><span class="toc-number">4.3.2.</span> <span class="toc-text">4.3.2实现类似:first-child的效果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-3%E4%BC%97%E5%A4%9A%E9%AB%98%E7%BA%A7%E9%80%89%E6%8B%A9%E5%99%A8%E6%8A%80%E6%9C%AF%E7%9A%84%E6%A0%B8%E5%BF%83"><span class="toc-number">4.3.3.</span> <span class="toc-text">4.3.3众多高级选择器技术的核心</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4%E9%9A%8F%E5%90%8E%E5%85%84%E5%BC%9F%E9%80%89%E6%8B%A9%E7%AC%A6%E5%BC%AF%E5%BC%AF"><span class="toc-number">4.4.</span> <span class="toc-text">4.4随后兄弟选择符弯弯(~)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-1%E5%92%8C%E7%9B%B8%E9%82%BB%E5%85%84%E5%BC%9F%E9%80%89%E6%8B%A9%E7%AC%A6%E5%8C%BA%E5%88%AB"><span class="toc-number">4.4.1.</span> <span class="toc-text">4.4.1和相邻兄弟选择符区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-2%E4%B8%BA%E4%BB%80%E4%B9%88%E6%B2%A1%E6%9C%89%E5%89%8D%E9%9D%A2%E5%85%84%E5%BC%9F%E9%80%89%E6%8B%A9%E7%AC%A6"><span class="toc-number">4.4.2.</span> <span class="toc-text">4.4.2为什么没有前面兄弟选择符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-3%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%89%8D%E9%9D%A2%E5%85%84%E5%BC%9F%E9%80%89%E6%8B%A9%E7%AC%A6%E7%9A%84%E6%95%88%E6%9E%9C"><span class="toc-number">4.4.3.</span> <span class="toc-text">4.4.3如何实现前面兄弟选择符的效果</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5%E5%BF%AB%E9%80%9F%E4%BA%86%E8%A7%A3%E5%88%97%E9%80%89%E6%8B%A9%E7%AC%A6%E5%8F%8C%E7%AE%A1%E9%81%93"><span class="toc-number">4.5.</span> <span class="toc-text">4.5快速了解列选择符双管道(||)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">5.</span> <span class="toc-text">5 元素选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8%E7%9A%84%E7%BA%A7%E8%81%94%E8%AF%AD%E6%B3%95"><span class="toc-number">5.1.</span> <span class="toc-text">5.1元素选择器的级联语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2%E6%A0%87%E7%AD%BE%E9%80%89%E6%8B%A9%E5%99%A8%E4%BA%8C%E4%B8%89%E4%BA%8B"><span class="toc-number">5.2.</span> <span class="toc-text">5.2标签选择器二三事</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-1%E6%A0%87%E7%AD%BE%E9%80%89%E6%8B%A9%E5%99%A8%E6%B7%B7%E5%90%88%E5%85%B6%E4%BB%96%E9%80%89%E6%8B%A9%E5%99%A8%E7%9A%84%E4%BC%98%E5%8C%96"><span class="toc-number">5.2.1.</span> <span class="toc-text">5.2.1标签选择器混合其他选择器的优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-2%E6%A0%87%E7%AD%BE%E9%80%89%E6%8B%A9%E5%99%A8%E4%B8%8E%E8%87%AA%E5%AE%9A%E4%B9%89%E5%85%83%E7%B4%A0"><span class="toc-number">5.2.2.</span> <span class="toc-text">5.2.2标签选择器与自定义元素</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3%E7%89%B9%E6%AE%8A%E7%9A%84%E6%A0%87%E7%AD%BE%E9%80%89%E6%8B%A9%E5%99%A8-%E9%80%9A%E9%85%8D%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">5.3.</span> <span class="toc-text">5.3特殊的标签选择器:通配选择器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">6.</span> <span class="toc-text">6 属性选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-ID%E9%80%89%E6%8B%A9%E5%99%A8%E5%92%8C%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">6.1.</span> <span class="toc-text">6.1 ID选择器和类选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2%E5%B1%9E%E6%80%A7%E5%80%BC%E7%9B%B4%E6%8E%A5%E5%8C%B9%E9%85%8D%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">6.2.</span> <span class="toc-text">6.2属性值直接匹配选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-1%E8%AF%A6%E7%BB%86%E4%BA%86%E8%A7%A34%E7%A7%8D%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">6.2.1.</span> <span class="toc-text">6.2.1详细了解4种选择器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-2AMCSS%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E7%AE%80%E4%BB%8B"><span class="toc-number">6.2.2.</span> <span class="toc-text">6.2.2AMCSS开发模式简介</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3%E5%B1%9E%E6%80%A7%E5%80%BC%E6%AD%A3%E5%88%99%E5%8C%B9%E9%85%8D%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">6.3.</span> <span class="toc-text">6.3属性值正则匹配选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-3-1%E8%AF%A6%E7%BB%86%E4%BA%86%E8%A7%A33%E7%A7%8D%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">6.3.1.</span> <span class="toc-text">6.3.1详细了解3种选择器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-3-2-CSS%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8%E6%90%9C%E7%B4%A2%E8%BF%87%E6%BB%A4%E6%8A%80%E6%9C%AF"><span class="toc-number">6.3.2.</span> <span class="toc-text">6.3.2 CSS属性选择器搜索过滤技术</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4%E5%BF%BD%E7%95%A5%E5%B1%9E%E6%80%A7%E5%80%BC%E5%A4%A7%E5%B0%8F%E5%86%99%E7%9A%84%E6%AD%A3%E5%88%99%E5%8C%B9%E9%85%8D%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">6.4.</span> <span class="toc-text">6.4忽略属性值大小写的正则匹配运算符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E4%BC%AA%E7%B1%BB"><span class="toc-number">7.</span> <span class="toc-text">7 用户行为伪类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-%E6%89%8B%E5%9E%8B%E7%BB%8F%E8%BF%87%E4%BC%AA%E7%B1%BB-hover"><span class="toc-number">7.1.</span> <span class="toc-text">7.1 手型经过伪类:hover</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-1-%E4%BD%93%E9%AA%8C%E4%BC%98%E5%8C%96%E4%B8%8E-hover%E5%BB%B6%E6%97%B6"><span class="toc-number">7.1.1.</span> <span class="toc-text">7.1.1 体验优化与:hover延时</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-2-%E9%9D%9E%E5%AD%90%E5%85%83%E7%B4%A0%E7%9A%84-hover%E6%98%BE%E7%A4%BA"><span class="toc-number">7.1.2.</span> <span class="toc-text">7.1.2 非子元素的:hover显示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-3-%E7%BA%AF-hover%E6%98%BE%E7%A4%BA%E6%B5%AE%E5%B1%82%E7%9A%84%E4%BD%93%E9%AA%8C%E9%97%AE%E9%A2%98"><span class="toc-number">7.1.3.</span> <span class="toc-text">7.1.3 纯:hover显示浮层的体验问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2%E6%BF%80%E6%B4%BB%E7%8A%B6%E6%80%81%E4%BC%AA%E7%B1%BB-active"><span class="toc-number">7.2.</span> <span class="toc-text">7.2激活状态伪类:active</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-2-1-active%E4%BC%AA%E7%B1%BB%E6%A6%82%E8%BF%B0"><span class="toc-number">7.2.1.</span> <span class="toc-text">7.2.1:active伪类概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-2-2%E6%8C%89%E9%92%AE%E7%9A%84%E9%80%9A%E7%94%A8-active%E6%A0%B7%E5%BC%8F%E6%8A%80%E5%B7%A7"><span class="toc-number">7.2.2.</span> <span class="toc-text">7.2.2按钮的通用:active样式技巧</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3%E7%84%A6%E7%82%B9%E4%BC%AA%E7%B1%BB-focus"><span class="toc-number">7.3.</span> <span class="toc-text">7.3焦点伪类:focus</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-3-1-focus%E4%BC%AA%E7%B1%BB%E5%8C%B9%E9%85%8D%E6%9C%BA%E5%88%B6"><span class="toc-number">7.3.1.</span> <span class="toc-text">7.3.1:focus伪类匹配机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-3-2-focus%E4%BC%AA%E7%B1%BB%E4%B8%8Eoutline"><span class="toc-number">7.3.2.</span> <span class="toc-text">7.3.2:focus伪类与outline</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-3-3-CSS-focus%E4%BC%AA%E7%B1%BB%E4%B8%8E%E9%94%AE%E7%9B%98%E6%97%A0%E9%9A%9C%E7%A2%8D%E8%AE%BF%E9%97%AE"><span class="toc-number">7.3.3.</span> <span class="toc-text">7.3.3 CSS:focus伪类与键盘无障碍访问</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-4%E6%95%B4%E4%BD%93%E7%84%A6%E7%82%B9%E4%BC%AA%E7%B1%BB-focus-within"><span class="toc-number">7.4.</span> <span class="toc-text">7.4整体焦点伪类:focus-within</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-4-1-focus-within%E5%92%8C-focus%E4%BC%AA%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">7.4.1.</span> <span class="toc-text">7.4.1 :focus-within和:focus伪类的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-4-2-focus-within%E5%AE%9E%E7%8E%B0%E6%97%A0%E9%9A%9C%E7%A2%8D%E8%AE%BF%E9%97%AE%E7%9A%84%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8"><span class="toc-number">7.4.2.</span> <span class="toc-text">7.4.2 :focus-within实现无障碍访问的下拉列表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-5%E9%94%AE%E7%9B%98%E7%84%A6%E7%82%B9%E4%BC%AA%E7%B1%BB-focus-visible"><span class="toc-number">7.5.</span> <span class="toc-text">7.5键盘焦点伪类:focus-visible</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-URL%E5%AE%9A%E4%BD%8D%E4%BC%AA%E7%B1%BB"><span class="toc-number">8.</span> <span class="toc-text">8 URL定位伪类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1%E9%93%BE%E6%8E%A5%E5%8E%86%E5%8F%B2%E4%BC%AA%E7%B1%BB-link%E5%92%8C-visited"><span class="toc-number">8.1.</span> <span class="toc-text">8.1链接历史伪类:link和:visited</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8-1-1%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-link"><span class="toc-number">8.1.1.</span> <span class="toc-text">8.1.1深入理解:link</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-1-2-%E6%80%AA%E7%99%96%E6%9C%80%E5%A4%9A%E7%9A%84CSS%E4%BC%AA%E7%B1%BB-visited"><span class="toc-number">8.1.2.</span> <span class="toc-text">8.1.2 怪癖最多的CSS伪类:visited</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2%E8%B6%85%E9%93%BE%E6%8E%A5%E4%BC%AA%E7%B1%BB-any-link"><span class="toc-number">8.2.</span> <span class="toc-text">8.2超链接伪类:any-link</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3%E7%9B%AE%E6%A0%87%E4%BC%AA%E7%B1%BB-target"><span class="toc-number">8.3.</span> <span class="toc-text">8.3目标伪类:target</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8-3-1-target%E4%B8%8E%E9%94%9A%E7%82%B9"><span class="toc-number">8.3.1.</span> <span class="toc-text">8.3.1:target与锚点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-3-2-target%E4%BA%A4%E4%BA%92%E5%B8%83%E5%B1%80%E6%8A%80%E6%9C%AF%E7%AE%80%E4%BB%8B"><span class="toc-number">8.3.2.</span> <span class="toc-text">8.3.2:target交互布局技术简介</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-4%E7%9B%AE%E6%A0%87%E5%AE%B9%E5%99%A8%E4%BC%AA%E7%B1%BB-target-within"><span class="toc-number">8.4.</span> <span class="toc-text">8.4目标容器伪类:target-within</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E8%BE%93%E5%85%A5%E4%BC%AA%E7%B1%BB"><span class="toc-number">9.</span> <span class="toc-text">9 输入伪类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#9-1%E8%BE%93%E5%85%A5%E6%8E%A7%E4%BB%B6%E7%8A%B6%E6%80%81"><span class="toc-number">9.1.</span> <span class="toc-text">9.1输入控件状态</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#9-1-1%E5%8F%AF%E7%94%A8%E7%8A%B6%E6%80%81%E4%B8%8E%E7%A6%81%E7%94%A8%E7%8A%B6%E6%80%81%E4%BC%AA%E7%B1%BB-enabled%E5%92%8C-disabled"><span class="toc-number">9.1.1.</span> <span class="toc-text">9.1.1可用状态与禁用状态伪类:enabled和:disabled</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-1-2%E8%AF%BB%E5%86%99%E7%89%B9%E6%80%A7%E4%BC%AA%E7%B1%BB-read-only%E5%92%8C-read-write"><span class="toc-number">9.1.2.</span> <span class="toc-text">9.1.2读写特性伪类:read-only和:read-write</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-1-3%E5%8D%A0%E4%BD%8D%E7%AC%A6%E6%98%BE%E7%A4%BA%E4%BC%AA%E7%B1%BB-placeholder-shown"><span class="toc-number">9.1.3.</span> <span class="toc-text">9.1.3占位符显示伪类:placeholder-shown</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-1-4%E9%BB%98%E8%AE%A4%E9%80%89%E9%A1%B9%E4%BC%AA%E7%B1%BB-default"><span class="toc-number">9.1.4.</span> <span class="toc-text">9.1.4默认选项伪类:default</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-2-%E8%BE%93%E5%85%A5%E5%80%BC%E7%8A%B6%E6%80%81"><span class="toc-number">9.2.</span> <span class="toc-text">9.2 输入值状态</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#9-2-1%E9%80%89%E4%B8%AD%E9%80%89%E9%A1%B9%E4%BC%AA%E7%B1%BB-checked"><span class="toc-number">9.2.1.</span> <span class="toc-text">9.2.1选中选项伪类:checked</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-2-2%E4%B8%8D%E7%A1%AE%E5%AE%9A%E5%80%BC%E4%BC%AA%E7%B1%BB-indeterminate"><span class="toc-number">9.2.2.</span> <span class="toc-text">9.2.2不确定值伪类:indeterminate</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-3%E8%BE%93%E5%85%A5%E5%80%BC%E9%AA%8C%E8%AF%81"><span class="toc-number">9.3.</span> <span class="toc-text">9.3输入值验证</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#9-3-1%E6%9C%89%E6%95%88%E6%80%A7%E9%AA%8C%E8%AF%81%E4%BC%AA%E7%B1%BB-valid%E5%92%8C-invalid"><span class="toc-number">9.3.1.</span> <span class="toc-text">9.3.1有效性验证伪类:valid和:invalid</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-3-2-%E8%8C%83%E5%9B%B4%E9%AA%8C%E8%AF%81%E4%BC%AA%E7%B1%BB-in-range-%E5%92%8C-out-of-range"><span class="toc-number">9.3.2.</span> <span class="toc-text">9.3.2 范围验证伪类:in-range 和:out-of-range</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-3-3%E5%8F%AF%E9%80%89%E6%80%A7%E4%BC%AA%E7%B1%BB-required%E5%92%8C-optional"><span class="toc-number">9.3.3.</span> <span class="toc-text">9.3.3可选性伪类:required和:optional</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-3-4%E7%94%A8%E6%88%B7%E4%BA%A4%E4%BA%92%E4%BC%AA%E7%B1%BB-user-invalid%E5%92%8C%E7%A9%BA%E5%80%BC%E4%BC%AA%E7%B1%BB-blank"><span class="toc-number">9.3.4.</span> <span class="toc-text">9.3.4用户交互伪类:user-invalid和空值伪类:blank</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E6%A0%91%E7%BB%93%E6%9E%84%E4%BC%AA%E7%B1%BB"><span class="toc-number">10.</span> <span class="toc-text">10 树结构伪类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#10-1-root%E4%BC%AA%E7%B1%BB"><span class="toc-number">10.1.</span> <span class="toc-text">10.1:root伪类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#10-1-1-root%E4%BC%AA%E7%B1%BB%E5%92%8C-lt-html-gt-%E5%85%83%E7%B4%A0"><span class="toc-number">10.1.1.</span> <span class="toc-text">10.1.1:root伪类和&lt;html&gt;元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-1-2-root%E4%BC%AA%E7%B1%BB%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">10.1.2.</span> <span class="toc-text">10.1.2:root伪类的应用场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-2-empty%E4%BC%AA%E7%B1%BB"><span class="toc-number">10.2.</span> <span class="toc-text">10.2:empty伪类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#10-2-1%E5%AF%B9-empty%E4%BC%AA%E7%B1%BB%E5%8F%AF%E8%83%BD%E7%9A%84%E8%AF%AF%E8%A7%A3"><span class="toc-number">10.2.1.</span> <span class="toc-text">10.2.1对:empty伪类可能的误解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-2-2%E8%B6%85%E5%AE%9E%E7%94%A8%E8%B6%85%E9%AB%98%E9%A2%91%E4%BD%BF%E7%94%A8%E7%9A%84-empty%E4%BC%AA%E7%B1%BB"><span class="toc-number">10.2.2.</span> <span class="toc-text">10.2.2超实用超高频使用的:empty伪类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-3-%E5%AD%90%E7%B4%A2%E5%BC%95%E4%BC%AA%E7%B1%BB"><span class="toc-number">10.3.</span> <span class="toc-text">10.3 子索引伪类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#10-3-1-first-child%E4%BC%AA%E7%B1%BB%E5%92%8C-last-child%E4%BC%AA%E7%B1%BB"><span class="toc-number">10.3.1.</span> <span class="toc-text">10.3.1 :first-child伪类和:last-child伪类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-3-2-only-child%E4%BC%AA%E7%B1%BB"><span class="toc-number">10.3.2.</span> <span class="toc-text">10.3.2 :only-child伪类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-3-3-nth-child-%E4%BC%AA%E7%B1%BB%E5%92%8C-nth-last-child-%E4%BC%AA%E7%B1%BB"><span class="toc-number">10.3.3.</span> <span class="toc-text">10.3.3 :nth-child()伪类和:nth-last-child()伪类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-4%E5%8C%B9%E9%85%8D%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%AD%90%E7%B4%A2%E5%BC%95%E4%BC%AA%E7%B1%BB"><span class="toc-number">10.4.</span> <span class="toc-text">10.4匹配类型的子索引伪类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#10-4-1-first-of-type%E4%BC%AA%E7%B1%BB%E5%92%8C-last-of-type%E4%BC%AA%E7%B1%BB"><span class="toc-number">10.4.1.</span> <span class="toc-text">10.4.1 :first-of-type伪类和:last-of-type伪类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-4-2-only-of-type%E4%BC%AA%E7%B1%BB"><span class="toc-number">10.4.2.</span> <span class="toc-text">10.4.2 :only-of-type伪类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-4-3-nth-of-type-%E4%BC%AA%E7%B1%BB%E5%92%8C-nth-last-of-type-%E4%BC%AA%E7%B1%BB"><span class="toc-number">10.4.3.</span> <span class="toc-text">10.4.3 :nth-of-type()伪类和:nth-last-of-type()伪类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E9%80%BB%E8%BE%91%E7%BB%84%E5%90%88%E4%BC%AA%E7%B1%BB"><span class="toc-number">11.</span> <span class="toc-text">11 逻辑组合伪类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-1%E5%90%A6%E5%AE%9A%E4%BC%AA%E7%B1%BB-not"><span class="toc-number">11.1.</span> <span class="toc-text">11.1否定伪类:not()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-2%E4%BA%86%E8%A7%A3%E4%BB%BB%E6%84%8F%E5%8C%B9%E9%85%8D%E4%BC%AA%E7%B1%BB-is"><span class="toc-number">11.2.</span> <span class="toc-text">11.2了解任意匹配伪类:is()</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#11-2-1-is-%E4%BC%AA%E7%B1%BB%E4%B8%8E-matches-%E4%BC%AA%E7%B1%BB%E5%8F%8A-any-%E4%BC%AA%E7%B1%BB%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">11.2.1.</span> <span class="toc-text">11.2.1 :is()伪类与:matches()伪类及:any()伪类之间的关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-2-2-is-%E4%BC%AA%E7%B1%BB%E7%9A%84%E8%AF%AD%E6%B3%95%E4%B8%8E%E4%BD%9C%E7%94%A8"><span class="toc-number">11.2.2.</span> <span class="toc-text">11.2.2 :is()伪类的语法与作用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-3%E4%BA%86%E8%A7%A3%E4%BB%BB%E6%84%8F%E5%8C%B9%E9%85%8D%E4%BC%AA%E7%B1%BB-where"><span class="toc-number">11.3.</span> <span class="toc-text">11.3了解任意匹配伪类:where()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-4%E4%BA%86%E8%A7%A3%E5%85%B3%E8%81%94%E4%BC%AA%E7%B1%BB-has"><span class="toc-number">11.4.</span> <span class="toc-text">11.4了解关联伪类:has()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E5%85%B6%E4%BB%96%E4%BC%AA%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">12.</span> <span class="toc-text">12 其他伪类选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#12-1%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9B%B8%E5%85%B3%E7%9A%84%E4%BC%AA%E7%B1%BB"><span class="toc-number">12.1.</span> <span class="toc-text">12.1与作用域相关的伪类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#12-1-1%E5%8F%82%E8%80%83%E5%85%83%E7%B4%A0%E4%BC%AA%E7%B1%BB-scope"><span class="toc-number">12.1.1.</span> <span class="toc-text">12.1.1参考元素伪类:scope</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-1-2-Shadow%E6%A0%91%E6%A0%B9%E5%85%83%E7%B4%A0%E4%BC%AA%E7%B1%BB-host"><span class="toc-number">12.1.2.</span> <span class="toc-text">12.1.2 Shadow树根元素伪类:host</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-1-3-Shadow%E6%A0%91%E6%A0%B9%E5%85%83%E7%B4%A0%E5%8C%B9%E9%85%8D%E4%BC%AA%E7%B1%BB-host"><span class="toc-number">12.1.3.</span> <span class="toc-text">12.1.3 Shadow树根元素匹配伪类:host()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-1-4-Shadow%E6%A0%91%E6%A0%B9%E5%85%83%E7%B4%A0%E4%B8%8A%E4%B8%8B%E6%96%87%E5%8C%B9%E9%85%8D%E4%BC%AA%E7%B1%BB-host-context"><span class="toc-number">12.1.4.</span> <span class="toc-text">12.1.4 Shadow树根元素上下文匹配伪类:host-context().</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-2%E4%B8%8E%E5%85%A8%E5%B1%8F%E7%9B%B8%E5%85%B3%E7%9A%84%E4%BC%AA%E7%B1%BB-fullscreen"><span class="toc-number">12.2.</span> <span class="toc-text">12.2与全屏相关的伪类 :fullscreen</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-3-%E4%BA%86%E8%A7%A3%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3%E4%BC%AA%E7%B1%BB"><span class="toc-number">12.3.</span> <span class="toc-text">12.3 了解语言相关伪类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#12-3-1-%E6%96%B9%E5%90%91%E4%BC%AA%E7%B1%BB-dir"><span class="toc-number">12.3.1.</span> <span class="toc-text">12.3.1 方向伪类:dir()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-3-2-%E8%AF%AD%E8%A8%80%E4%BC%AA%E7%B1%BB-lang"><span class="toc-number">12.3.2.</span> <span class="toc-text">12.3.2 语言伪类:lang()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-4-%E4%BA%86%E8%A7%A3%E8%B5%84%E6%BA%90%E7%8A%B6%E6%80%81%E4%BC%AA%E7%B1%BB"><span class="toc-number">12.4.</span> <span class="toc-text">12.4 了解资源状态伪类</span></a></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-CSS选择器世界" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSS 选择器世界
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2021/02/08/CSS%E9%80%89%E6%8B%A9%E5%99%A8%E4%B8%96%E7%95%8C/" class="article-date">
+	  <time datetime="2021-02-08T02:19:29.000Z" itemprop="datePublished">2021-02-08</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/CSS/" rel="tag">CSS</a>, <a class="article-tag-link-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a>, <a class="article-tag-link-link" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag">读书笔记</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/02/08/CSS%E9%80%89%E6%8B%A9%E5%99%A8%E4%B8%96%E7%95%8C/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 5.9k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 27(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1 概述"></a>1 概述</h2><h3 id="1-1为什么CSS选择器很强"><a href="#1-1为什么CSS选择器很强" class="headerlink" title="1.1为什么CSS选择器很强"></a>1.1为什么CSS选择器很强</h3><p>CSS为样式服务，重表现，轻逻辑。</p>
+<h3 id="1-2CSS选择器世界的一些基本概念"><a href="#1-2CSS选择器世界的一些基本概念" class="headerlink" title="1.2CSS选择器世界的一些基本概念"></a>1.2CSS选择器世界的一些基本概念</h3><h4 id="1-2-1选择器、选择符、伪类和伪元素"><a href="#1-2-1选择器、选择符、伪类和伪元素" class="headerlink" title="1.2.1选择器、选择符、伪类和伪元素"></a>1.2.1选择器、选择符、伪类和伪元素</h4><p>选择器： 是CSS语句块前的标签、类名等，如<code>body&#123;font:menu&#125;</code>中的body</p>
+<p>选择符：后代选择符空格()，子选择符箭头(&gt;)，相邻兄弟选择符加号(+)，随后兄弟选择符弯弯(~)，列选择符双管道(||)。</p>
+<p>（详见第4章）</p>
+<p>伪类：与用户行为有关，前面有一个<code>:</code>的，如<code>：hover</code></p>
+<p>伪元素：前面有两个冒号的</p>
+<h4 id="1-2-2CSS选择器的作用域"><a href="#1-2-2CSS选择器的作用域" class="headerlink" title="1.2.2CSS选择器的作用域"></a>1.2.2CSS选择器的作用域</h4><p>有局部作用域</p>
+<p>Shadow DOM与局部作用域实例页面</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>我是一个普通的<span class="hljs-symbol">&amp;lt;</span>p<span class="hljs-symbol">&amp;gt;</span>元素，我的背景色是？<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;hostElement&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 创建 shadow DOM</span><br><span class="hljs-keyword">var</span> shadow = hostElement.attachShadow(&#123;<span class="hljs-attr">mode</span>: <span class="hljs-string">&#x27;open&#x27;</span>&#125;);<br><span class="hljs-comment">// 给 shadow DOM 添加文字</span><br>shadow.innerHTML = <span class="hljs-string">&#x27;&lt;p&gt;我是由Shadow DOM创建的&amp;lt;p&amp;gt;元素，我的背景色是？&lt;/p&gt;&#x27;</span>;<br><span class="hljs-comment">// 添加CSS，文字背景色变成黑色</span><br>shadow.innerHTML += <span class="hljs-string">&#x27;&lt;style&gt;p &#123; background-color: #333; color: #fff; &#125;&lt;/style&gt;&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="1-2-3-CSS选择器的命名空间"><a href="#1-2-3-CSS选择器的命名空间" class="headerlink" title="1.2.3 CSS选择器的命名空间"></a>1.2.3 CSS选择器的命名空间</h4><p>命名空间：namespace</p>
+<p>作用：避免冲突</p>
+<p>（了解即可）</p>
+<h3 id="1-3无效CSS选择器特性与实际应用"><a href="#1-3无效CSS选择器特性与实际应用" class="headerlink" title="1.3无效CSS选择器特性与实际应用"></a>1.3无效CSS选择器特性与实际应用</h3><p>使用新的CSS选择器时，为了避免浏览器之间不同的支持程度，因此最好分开书写。</p>
+<p>例外：浏览器可以识别以-webkit-私有前缀开头的伪元素</p>
+<h2 id="2-CSS选择器的优先级"><a href="#2-CSS选择器的优先级" class="headerlink" title="2 CSS选择器的优先级"></a>2 CSS选择器的优先级</h2><h3 id="2-1CSS优先级规则概览"><a href="#2-1CSS优先级规则概览" class="headerlink" title="2.1CSS优先级规则概览"></a>2.1CSS优先级规则概览</h3><p>级别越高，优先级越高：</p>
+<ol>
+<li>0级：通配选择器(*)、选择符{<code>+</code>,<code>&gt;</code>,<code>~</code>,空格,<code>||</code>}、逻辑组合伪类<code>:not(),:is(),:where</code></li>
+<li>1级：标签选择器<code>body&#123;&#125;,p&#123;&#125;</code></li>
+<li>2级：类选择器<code>.foo&#123;&#125;</code>  属性选择器<code>[foo]&#123;&#125;</code>、伪类<code>:hover&#123;&#125;</code></li>
+<li>3级：id选择器<code>#foo&#123;&#125;</code></li>
+<li>4级：style属性内联<code>&lt;div style=&quot;color:#000000&quot;&gt;</code></li>
+<li>5级：！important顶级优先级</li>
+</ol>
+<h3 id="2-2深入CSS选择器优先级"><a href="#2-2深入CSS选择器优先级" class="headerlink" title="2.2深入CSS选择器优先级"></a>2.2深入CSS选择器优先级</h3><h4 id="2-2-1-CSS选择器优先级的计算规则"><a href="#2-2-1-CSS选择器优先级的计算规则" class="headerlink" title="2.2.1 CSS选择器优先级的计算规则"></a>2.2.1 CSS选择器优先级的计算规则</h4><p>0级选择器：优先级数值+0；1级选择器：优先级数值+1；2级选择器：优先级数值+10；3级选择器：优先级数值+100；</p>
+<p>优先级数值一样：遵循“后来居上”原则，后渲染的优先级高。这是相对于整个页面文档，所以css文件的引入顺序也很重要。</p>
+<ul>
+<li>增加CSS优先级的技巧<ul>
+<li>重复选择器自身<code>.foo.foo&#123;&#125;</code></li>
+<li>借助必然会存在的属性选择器<code>.foo[class]&#123;&#125;</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="2-2-2-256个选择器的越级现象"><a href="#2-2-2-256个选择器的越级现象" class="headerlink" title="2.2.2 256个选择器的越级现象"></a>2.2.2 256个选择器的越级现象</h4><p>256个标签选择器的优先级大于类名选择器，因为出现了溢出。</p>
+<h2 id="3-CSS选择器的命名"><a href="#3-CSS选择器的命名" class="headerlink" title="3 CSS选择器的命名"></a>3 CSS选择器的命名</h2><h3 id="3-1CSS选择器是否区分大小写"><a href="#3-1CSS选择器是否区分大小写" class="headerlink" title="3.1CSS选择器是否区分大小写"></a>3.1CSS选择器是否区分大小写</h3><table>
+<thead>
+<tr>
+<th>-选择器类型</th>
+<th>-示例</th>
+<th>-是否对大小写敏感</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>标签选择器</td>
+<td>div{}</td>
+<td>不敏感</td>
+</tr>
+<tr>
+<td>属性选择器-纯属性</td>
+<td>[attr]</td>
+<td>不敏感</td>
+</tr>
+<tr>
+<td>属性选择器</td>
+<td>[attr=val]</td>
+<td>属性值敏感</td>
+</tr>
+<tr>
+<td>类选择器</td>
+<td>.container{}</td>
+<td>敏感</td>
+</tr>
+<tr>
+<td>ID选择器</td>
+<td>#foo{}</td>
+<td>敏感</td>
+</tr>
+</tbody></table>
+<h3 id="3-2CSS选择器命名的合法性"><a href="#3-2CSS选择器命名的合法性" class="headerlink" title="3.2CSS选择器命名的合法性"></a>3.2CSS选择器命名的合法性</h3><ul>
+<li><p>类名选择器和ID选择器不能以数字开头</p>
+<p><code>.\31-foo&#123;&#125;</code>   <code>&lt;span class=&quot;1-foo&quot;&gt;string&lt;/span&gt;</code></p>
+</li>
+<li><p>以字符开头的选择器需要转义</p>
+</li>
+<li><p>支持中文字符和中文标点符号</p>
+</li>
+<li><p>支持emoji表情</p>
+</li>
+</ul>
+<h3 id="3-3CSS选择器的命名是一个哲学问题"><a href="#3-3CSS选择器的命名是一个哲学问题" class="headerlink" title="3.3CSS选择器的命名是一个哲学问题"></a>3.3CSS选择器的命名是一个哲学问题</h3><h4 id="3-3-1长命名还是短命名"><a href="#3-3-1长命名还是短命名" class="headerlink" title="3.3.1长命名还是短命名"></a>3.3.1长命名还是短命名</h4><p>使用短命名</p>
+<h4 id="3-3-2单命名还是组合命名"><a href="#3-3-2单命名还是组合命名" class="headerlink" title="3.3.2单命名还是组合命名"></a>3.3.2单命名还是组合命名</h4><ul>
+<li>使用前缀将常见的单词模块保护起来，避免冲突。<ul>
+<li>前缀最好是项目缩写。</li>
+<li>一个项目的前缀最好统一。</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-3-3面向属性的命名和面向语义的命名"><a href="#3-3-3面向属性的命名和面向语义的命名" class="headerlink" title="3.3.3面向属性的命名和面向语义的命名"></a>3.3.3面向属性的命名和面向语义的命名</h4><p>小项目使用面向语义的命名方式，大项目采用面向属性的命名和面向语义的命名结合。</p>
+<p>面向属性的命名：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.dn</span> &#123; <span class="hljs-attribute">display</span>: none;&#125;<br><span class="hljs-selector-class">.db</span> &#123; <span class="hljs-attribute">display</span>: block;&#125; <br><span class="hljs-selector-class">.df</span> &#123; <span class="hljs-attribute">display</span>:flex;&#125; <br><span class="hljs-selector-class">.dg</span> &#123; <span class="hljs-attribute">display</span>: grid;&#125;<br><span class="hljs-selector-class">.fl</span> &#123; <span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:left</span>;&#125;<br><span class="hljs-selector-class">.fr</span> &#123; <span class="hljs-attribute">float</span>: right;&#125;<br><span class="hljs-selector-class">.tl</span>&#123; <span class="hljs-attribute">text-align</span>: left; &#125; <br><span class="hljs-selector-class">.tr</span> &#123; <span class="hljs-attribute">text-align</span>: right;&#125; <br><span class="hljs-selector-class">.tc</span>&#123; <span class="hljs-attribute">text-align</span>: center; &#125; <br><span class="hljs-selector-class">.tj</span>&#123;<span class="hljs-attribute">text-align</span>:justify;&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>面向语义的命名则是根据应用元素所处的上下文来命名的。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs css"> <span class="hljs-selector-class">.header</span> &#123; <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#333</span>; <span class="hljs-attribute">color</span>:<span class="hljs-number">#fff</span>;&#125;<br><span class="hljs-selector-class">.logo</span> &#123; <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0</span>;<span class="hljs-attribute">color</span>:transparent;&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-4CSS选择器设计的最佳实践"><a href="#3-4CSS选择器设计的最佳实践" class="headerlink" title="3.4CSS选择器设计的最佳实践"></a>3.4CSS选择器设计的最佳实践</h3><h4 id="3-4-1不要使用ID选择器"><a href="#3-4-1不要使用ID选择器" class="headerlink" title="3.4.1不要使用ID选择器"></a>3.4.1不要使用ID选择器</h4><p>缺陷：</p>
+<ul>
+<li>优先级太高，不利于覆盖和修改<ul>
+<li>可以使用属性选择器<code>[id=&quot;csId&quot;]</code></li>
+</ul>
+</li>
+<li>和JavaScript耦合,产生bug</li>
+</ul>
+<h4 id="3-4-2不要嵌套选择器"><a href="#3-4-2不要嵌套选择器" class="headerlink" title="3.4.2不要嵌套选择器"></a>3.4.2不要嵌套选择器</h4><p>会限制HTML的结构，不利于后期修改HTML，调整层级和位置。</p>
+<p>错误示例：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.nav</span> <span class="hljs-selector-tag">a</span> &#123;&#125;<br><span class="hljs-selector-class">.box</span> &gt; <span class="hljs-selector-tag">div</span>&#123;&#125;  <br><span class="hljs-selector-class">.avatar</span> <span class="hljs-selector-tag">img</span> &#123;&#125; <br><span class="hljs-selector-class">.box</span> <span class="hljs-selector-class">.pic</span> <span class="hljs-selector-class">.icon</span> &#123;&#125;<br><span class="hljs-selector-class">.upbox</span> <span class="hljs-selector-class">.input</span> <span class="hljs-selector-class">.upbtn</span>  &#123;&#125;<br></code></pre></td></tr></table></figure>
+
+<p>正确用法：使用无嵌套的类名选择器</p>
+<h4 id="3-4-3不要歧视面向属性的命名"><a href="#3-4-3不要歧视面向属性的命名" class="headerlink" title="3.4.3不要歧视面向属性的命名"></a>3.4.3不要歧视面向属性的命名</h4><h4 id="3-4-4正确使用状态类名"><a href="#3-4-4正确使用状态类名" class="headerlink" title="3.4.4正确使用状态类名"></a>3.4.4正确使用状态类名</h4><h4 id="3-4-5最佳实践汇总"><a href="#3-4-5最佳实践汇总" class="headerlink" title="3.4.5最佳实践汇总"></a>3.4.5最佳实践汇总</h4><ol>
+<li>命名<ol>
+<li>命名最好使用小写，用<code>-</code>或<code>_</code>连接</li>
+<li>不推荐驼峰命名，驼峰命名留给JavaScript DOM</li>
+<li>组合个数控制在5个以下</li>
+<li>设置统一前缀</li>
+</ol>
+</li>
+<li>选择器类型选择<ol>
+<li>推荐用属性选择器代替id选择器</li>
+</ol>
+</li>
+</ol>
+<h2 id="4-CSS选择符"><a href="#4-CSS选择符" class="headerlink" title="4 CSS选择符"></a>4 CSS选择符</h2><h3 id="4-1后代选择符空格"><a href="#4-1后代选择符空格" class="headerlink" title="4.1后代选择符空格( )"></a>4.1后代选择符空格( )</h3><h4 id="4-1-1对CSS后代选择符可能错误的认识"><a href="#4-1-1对CSS后代选择符可能错误的认识" class="headerlink" title="4.1.1对CSS后代选择符可能错误的认识"></a>4.1.1对CSS后代选择符可能错误的认识</h4><p>e.g</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;lightblue&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;darkblue&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>1. 颜色是？<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;darkblue&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;lightblue&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>2. 颜色是？<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br>.lightblue p &#123; color: lightblue; &#125;<br>.darkblue p &#123; color: darkblue; &#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="4-1-2对JavaScript中后代选择符可能错误的认识"><a href="#4-1-2对JavaScript中后代选择符可能错误的认识" class="headerlink" title="4.1.2对JavaScript中后代选择符可能错误的认识"></a>4.1.2对JavaScript中后代选择符可能错误的认识</h4><h3 id="4-2子选择符箭头-gt"><a href="#4-2子选择符箭头-gt" class="headerlink" title="4.2子选择符箭头(&gt;)"></a>4.2子选择符箭头(&gt;)</h3><h4 id="4-2-1子选择符和后代选择符的区别"><a href="#4-2-1子选择符和后代选择符的区别" class="headerlink" title="4.2.1子选择符和后代选择符的区别"></a>4.2.1子选择符和后代选择符的区别</h4><p>子选择符只会匹配第一代子元素，后代选择符会匹配所有的后代。</p>
+<h4 id="4-2-2适合使用子选择符的场景"><a href="#4-2-2适合使用子选择符的场景" class="headerlink" title="4.2.2适合使用子选择符的场景"></a>4.2.2适合使用子选择符的场景</h4><p>尽量不使用</p>
+<p>子选择符会限制HTML的层级关系</p>
+<p>使用场景：</p>
+<ul>
+<li>状态类名控制</li>
+<li>标签受限</li>
+<li>层级位置判断</li>
+</ul>
+<h3 id="4-3相邻兄弟选择符加号"><a href="#4-3相邻兄弟选择符加号" class="headerlink" title="4.3相邻兄弟选择符加号(+)"></a>4.3相邻兄弟选择符加号(+)</h3><p>只能选择相邻的兄弟元素，且只是选择后面一个兄弟。</p>
+<h4 id="4-3-1相邻兄弟选择符的相关细节"><a href="#4-3-1相邻兄弟选择符的相关细节" class="headerlink" title="4.3.1相邻兄弟选择符的相关细节"></a>4.3.1相邻兄弟选择符的相关细节</h4><p>忽略文本节点</p>
+<p>忽略注释</p>
+<h4 id="4-3-2实现类似-first-child的效果"><a href="#4-3-2实现类似-first-child的效果" class="headerlink" title="4.3.2实现类似:first-child的效果"></a>4.3.2实现类似:first-child的效果</h4><p><code>.cs-li + p&#123;color：#424242&#125;</code>  所有p元素都带cs-li属性，则只有第一个<code>&lt;p&gt;</code>中的文字没有颜色设置。</p>
+<h4 id="4-3-3众多高级选择器技术的核心"><a href="#4-3-3众多高级选择器技术的核心" class="headerlink" title="4.3.3众多高级选择器技术的核心"></a>4.3.3众多高级选择器技术的核心</h4><p>配合伪类实现交互效果，如</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs html">用户名:<span class="hljs-tag">&lt;<span class="hljs-name">input</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;cs-tips&quot;</span>&gt;</span>不超过10个字符<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>  .cs-tips&#123;<br>color: gray;<br>margin-left:15px;<br>position: absolute;<br>visibility: hidden;<br>&#125;<br>:focus + .cs-tips &#123;<br>visibility: visible;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-4随后兄弟选择符弯弯"><a href="#4-4随后兄弟选择符弯弯" class="headerlink" title="4.4随后兄弟选择符弯弯(~)"></a>4.4随后兄弟选择符弯弯(~)</h3><h4 id="4-4-1和相邻兄弟选择符区别"><a href="#4-4-1和相邻兄弟选择符区别" class="headerlink" title="4.4.1和相邻兄弟选择符区别"></a>4.4.1和相邻兄弟选择符区别</h4><p>随后兄弟选择符会匹配后面所有的兄弟元素。</p>
+<h4 id="4-4-2为什么没有前面兄弟选择符"><a href="#4-4-2为什么没有前面兄弟选择符" class="headerlink" title="4.4.2为什么没有前面兄弟选择符"></a>4.4.2为什么没有前面兄弟选择符</h4><p>浏览器解析HTML是从前往后，从外往里进行。如果有前面兄弟选择符 ，网页呈现速度将大大减慢，浏览器会出现长时间的白板。</p>
+<h4 id="4-4-3如何实现前面兄弟选择符的效果"><a href="#4-4-3如何实现前面兄弟选择符的效果" class="headerlink" title="4.4.3如何实现前面兄弟选择符的效果"></a>4.4.3如何实现前面兄弟选择符的效果</h4><p>设置位置，将后面兄弟的位置设置在前面兄弟的前面。</p>
+<ol>
+<li><p>flex布局实现</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs css">&lt;div class=&quot;cs-flex&quot;&gt;<br>	&lt;input class=&quot;cs-input&quot;&gt;&lt;label class=&quot;cs-label&quot;&gt;用户名&lt;/label&gt;<br>&lt;/<span class="hljs-selector-tag">div</span>&gt;<br><br><span class="hljs-selector-class">.cs-flex</span>&#123;<br><span class="hljs-attribute">display</span>:inline-flex;<br>   <span class="hljs-attribute">flex-direction</span>: row-reverse;<br>&#125;<br>   <span class="hljs-selector-class">.cs-input</span>&#123;<br>       <span class="hljs-attribute">width</span>:<span class="hljs-number">200px</span>;<br>   &#125;<br>   <span class="hljs-selector-class">.cs-label</span>&#123;<br>       <span class="hljs-attribute">width</span>:<span class="hljs-number">64px</span>;<br>   &#125;<br>   <span class="hljs-selector-pseudo">:focus</span> ~ <span class="hljs-selector-class">.cs-label</span>&#123;<br>       <span class="hljs-attribute">color</span>:darkblue;<br>       <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">1px</span>;<br>   &#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>float浮动实现</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs css">&lt;div class=&quot;cs-float&quot;&gt;<br>		&lt;input class=&quot;cs-input&quot;&gt;&lt;label class=&quot;cs-label&quot;&gt;用户名&lt;/label&gt;<br>	&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>	<br>	<span class="hljs-selector-class">.cs-float</span>&#123;<br>	<span class="hljs-attribute">width</span>:<span class="hljs-number">264px</span>;<br>	&#125;<br>    <span class="hljs-selector-class">.cs-input</span>&#123;<br>        <span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:right</span>;<br>        <span class="hljs-attribute">width</span>:<span class="hljs-number">200px</span>;<br>    &#125;<br>    <span class="hljs-selector-class">.cs-label</span>&#123;<br>        <span class="hljs-attribute">display</span>: block;<br>        <span class="hljs-attribute">overflow</span>:hidden;<br>    &#125;<br>    <span class="hljs-selector-pseudo">:focus</span> ~ <span class="hljs-selector-class">.cs-label</span>&#123;<br>        <span class="hljs-attribute">color</span>:darkblue;<br>        <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">1px</span>;<br></code></pre></td></tr></table></figure></li>
+<li><p>absolute绝对定位实现</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.cs-absolute</span>&#123;<br><span class="hljs-attribute">width</span>:<span class="hljs-number">264px</span>;<br>   <span class="hljs-attribute">position</span>:relative;<br>&#125;<br>   <span class="hljs-selector-class">.cs-input</span>&#123;<br>       <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">64px</span>;<br>       <span class="hljs-attribute">width</span>:<span class="hljs-number">200px</span>;<br>   &#125;<br>   <span class="hljs-selector-class">.cs-label</span>&#123;<br>       <span class="hljs-attribute">position</span>:absolute;<br>       <span class="hljs-attribute">left</span>:<span class="hljs-number">0</span>;<br>   &#125;<br>   <span class="hljs-selector-pseudo">:focus</span> ~ <span class="hljs-selector-class">.cs-label</span>&#123;<br>       <span class="hljs-attribute">color</span>:darkblue;<br>       <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">1px</span>;<br>       &#125;<br>       <br>    &lt;div class=&quot;cs-absolute&quot;&gt;<br>	&lt;input class=&quot;cs-input&quot;&gt;&lt;label class=&quot;cs-label&quot;&gt;用户名&lt;/label&gt;<br>&lt;/<span class="hljs-selector-tag">div</span>&gt;<br></code></pre></td></tr></table></figure></li>
+<li><p>direction属性实现</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.cs-direction</span>&#123;<br><span class="hljs-attribute">direction</span>: rtl;<br>&#125;<br>   <span class="hljs-selector-class">.cs-direction</span> <span class="hljs-selector-class">.cs-label</span>,<span class="hljs-selector-class">.cs-direction</span> <span class="hljs-selector-class">.cs-input</span>&#123;<br>       <span class="hljs-attribute">direction</span>: ltr;<br>   &#125;<br>   <span class="hljs-selector-class">.cs-label</span>&#123;<br>       <span class="hljs-attribute">display</span>:inline-block;<br>   &#125;<br>   <span class="hljs-selector-pseudo">:focus</span> ~ <span class="hljs-selector-class">.cs-label</span>&#123;<br>       <span class="hljs-attribute">color</span>:darkblue;<br>       <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">1px</span>;<br>   &#125;<br><br>&lt;div class=&quot;cs-direction&quot;&gt;<br>	&lt;input class=&quot;cs-input&quot;&gt;&lt;label class=&quot;cs-label&quot;&gt;用户名&lt;/label&gt;<br>&lt;/<span class="hljs-selector-tag">div</span>&gt;<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="4-5快速了解列选择符双管道"><a href="#4-5快速了解列选择符双管道" class="headerlink" title="4.5快速了解列选择符双管道(||)"></a>4.5快速了解列选择符双管道(||)</h3><h2 id="5-元素选择器"><a href="#5-元素选择器" class="headerlink" title="5 元素选择器"></a>5 元素选择器</h2><h3 id="5-1元素选择器的级联语法"><a href="#5-1元素选择器的级联语法" class="headerlink" title="5.1元素选择器的级联语法"></a>5.1元素选择器的级联语法</h3><p>元素选择器是唯一不能重复自身的选择器</p>
+<p>级联使用时，元素选择器必须写在最前面。</p>
+<h3 id="5-2标签选择器二三事"><a href="#5-2标签选择器二三事" class="headerlink" title="5.2标签选择器二三事"></a>5.2标签选择器二三事</h3><h4 id="5-2-1标签选择器混合其他选择器的优化"><a href="#5-2-1标签选择器混合其他选择器的优化" class="headerlink" title="5.2.1标签选择器混合其他选择器的优化"></a>5.2.1标签选择器混合其他选择器的优化</h4><h4 id="5-2-2标签选择器与自定义元素"><a href="#5-2-2标签选择器与自定义元素" class="headerlink" title="5.2.2标签选择器与自定义元素"></a>5.2.2标签选择器与自定义元素</h4><h3 id="5-3特殊的标签选择器-通配选择器"><a href="#5-3特殊的标签选择器-通配选择器" class="headerlink" title="5.3特殊的标签选择器:通配选择器"></a>5.3特殊的标签选择器:通配选择器</h3><h2 id="6-属性选择器"><a href="#6-属性选择器" class="headerlink" title="6 属性选择器"></a>6 属性选择器</h2><h3 id="6-1-ID选择器和类选择器"><a href="#6-1-ID选择器和类选择器" class="headerlink" title="6.1 ID选择器和类选择器"></a>6.1 ID选择器和类选择器</h3><ol>
+<li><p>语法不同</p>
+</li>
+<li><p>优先级不同</p>
+</li>
+<li><p>唯一性与可重复性</p>
+<p>类可以重复使用，但id选择器要使用需要写完所有的id</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css">&lt;button id=&quot;cs-button cs-button-primary&quot;&gt;main&lt;/button&gt;<br><span class="hljs-selector-id">#cs-button</span>\<span class="hljs-number">20</span>cs-<span class="hljs-selector-tag">button</span>-primary&#123;&#125;<br><span class="hljs-comment">/*或者*/</span><br><span class="hljs-selector-attr">[id~=<span class="hljs-string">&quot;cs-button&quot;</span>]</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="6-2属性值直接匹配选择器"><a href="#6-2属性值直接匹配选择器" class="headerlink" title="6.2属性值直接匹配选择器"></a>6.2属性值直接匹配选择器</h3><ul>
+<li>[attr]</li>
+<li>[attr=”val”]</li>
+<li>[attr~=”val”]</li>
+<li>[attr|=”val”]</li>
+</ul>
+<h4 id="6-2-1详细了解4种选择器"><a href="#6-2-1详细了解4种选择器" class="headerlink" title="6.2.1详细了解4种选择器"></a>6.2.1详细了解4种选择器</h4><ul>
+<li><p>[attr]</p>
+<ul>
+<li>只要包含了指定的属性就匹配，不关心属性的值</li>
+</ul>
+</li>
+<li><p>[attr=”val”]</p>
+<ul>
+<li>属性值需要完全匹配</li>
+<li>不区分单双引号</li>
+<li>引号可以省略</li>
+<li>属性值包含空格，则需要转义或者老老实实使用引号</li>
+</ul>
+</li>
+<li><p>[attr~=”val”]</p>
+<ul>
+<li><p>属性值单词完全匹配选择器</p>
+</li>
+<li><p>属性值单词完全匹配选择器非常适合包含多种组合属性值的场景，例如，某元素共有9种 定位控制:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">data-align</span>=<span class="hljs-string">&quot;left top&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">data-align</span>=<span class="hljs-string">&quot;top&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">data-align</span>=<span class="hljs-string">&quot;right top&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">data-align</span>=<span class="hljs-string">&quot;right&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">data-align</span>=<span class="hljs-string">&quot;right bottom&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">data-align</span>=<span class="hljs-string">&quot;bottom&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">data-align</span>=<span class="hljs-string">&quot;left bottom&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">data-align</span>=<span class="hljs-string">&quot;left&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">data-align</span>=<span class="hljs-string">&quot;center&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>此时，最佳实践就是使用属性值单词完全匹配选择器:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-attr">[data-align]</span> &#123; <span class="hljs-attribute">left</span>: <span class="hljs-number">5</span>Ot;<span class="hljs-attribute">top</span>:<span class="hljs-number">508</span>;&#125;<br><span class="hljs-selector-attr">[data-align~=<span class="hljs-string">&quot;top&quot;</span>]</span> &#123; <span class="hljs-attribute">top</span>: O;&#125;<br><span class="hljs-selector-attr">[data-align~=<span class="hljs-string">&quot;right&quot;</span>]</span> &#123; <span class="hljs-attribute">right</span>:<span class="hljs-number">0</span>;&#125;<br><span class="hljs-selector-attr">[data-align~=<span class="hljs-string">&quot;bottom&quot;</span>]</span> &#123; <span class="hljs-attribute">bottom</span>: O;&#125;<br><span class="hljs-selector-attr">[data-align~=<span class="hljs-string">&quot;left&quot;</span>]</span>&#123; <span class="hljs-attribute">left</span>:<span class="hljs-number">0</span>;&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>[attr|=”val”]</p>
+<ul>
+<li>属性值起止片段完全匹配选择器，属性的值要么是“val”,要么以”val”开头</li>
+</ul>
+</li>
+</ul>
+<h4 id="6-2-2AMCSS开发模式简介"><a href="#6-2-2AMCSS开发模式简介" class="headerlink" title="6.2.2AMCSS开发模式简介"></a>6.2.2AMCSS开发模式简介</h4><h3 id="6-3属性值正则匹配选择器"><a href="#6-3属性值正则匹配选择器" class="headerlink" title="6.3属性值正则匹配选择器"></a>6.3属性值正则匹配选择器</h3><ul>
+<li>[attr^=”val”] 前匹配</li>
+<li>[attr$=”val”] 后匹配</li>
+<li>[attr*=”val”] 任意匹配</li>
+</ul>
+<h4 id="6-3-1详细了解3种选择器"><a href="#6-3-1详细了解3种选择器" class="headerlink" title="6.3.1详细了解3种选择器"></a>6.3.1详细了解3种选择器</h4><ul>
+<li>[attr^=”val”] <ul>
+<li>表示匹配attr属性值以字符val开头的元素</li>
+<li>可以匹配中文，如果没有空格，则引号可以省略</li>
+</ul>
+</li>
+<li>[attr$=”val”] 后匹配<ul>
+<li>表示匹配attr属性值以字符val结尾的元素</li>
+</ul>
+</li>
+<li>[attr*=”val”] 任意匹配<ul>
+<li>表示匹配attr属性值包含字符val的元素</li>
+</ul>
+</li>
+</ul>
+<h4 id="6-3-2-CSS属性选择器搜索过滤技术"><a href="#6-3-2-CSS属性选择器搜索过滤技术" class="headerlink" title="6.3.2 CSS属性选择器搜索过滤技术"></a>6.3.2 CSS属性选择器搜索过滤技术</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;search&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;input&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;输入城市名称或拼音&quot;</span> /&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span> <br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">data-search</span>=<span class="hljs-string">&quot;重庆市chongqing&quot;</span>&gt;</span>重庆市<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">data-search</span>=<span class="hljs-string">&quot;哈尔滨市haerbing&quot;</span>&gt;</span>哈尔滨市<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">data-search</span>=<span class="hljs-string">&quot;长春市changchun&quot;</span>&gt;</span>长春市<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    ...<br><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br><br><br>//js<br>var eleStyle = document.createElement(&#x27;style&#x27;);<br>document.head.appendChild(eleStyle);<br>// 文本框输入<br>input.addEventListener(&quot;input&quot;, function() &#123;<br>    var value = this.value.trim();<br>    eleStyle.innerHTML = value ? &#x27;[data-search]:not([data-search*=&quot;&#x27;+ value +&#x27;&quot;]) &#123; display: none; &#125;&#x27; : &#x27;&#x27;;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="6-4忽略属性值大小写的正则匹配运算符"><a href="#6-4忽略属性值大小写的正则匹配运算符" class="headerlink" title="6.4忽略属性值大小写的正则匹配运算符"></a>6.4忽略属性值大小写的正则匹配运算符</h3><p>使用字符i或I作为运算符，可以忽略属性值大小写。</p>
+<h2 id="7-用户行为伪类"><a href="#7-用户行为伪类" class="headerlink" title="7 用户行为伪类"></a>7 用户行为伪类</h2><h3 id="7-1-手型经过伪类-hover"><a href="#7-1-手型经过伪类-hover" class="headerlink" title="7.1 手型经过伪类:hover"></a>7.1 手型经过伪类:hover</h3><ul>
+<li>不适用于移动端</li>
+<li>在桌面端很常用</li>
+</ul>
+<h4 id="7-1-1-体验优化与-hover延时"><a href="#7-1-1-体验优化与-hover延时" class="headerlink" title="7.1.1 体验优化与:hover延时"></a>7.1.1 体验优化与:hover延时</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs css">&lt;<span class="hljs-selector-tag">table</span>&gt;<br>    &lt;<span class="hljs-selector-tag">tr</span>&gt;<br>      &lt;th scope=&quot;col&quot;&gt;标题1&lt;/th&gt;<br>      &lt;th scope=&quot;col&quot;&gt;标题2&lt;/th&gt;<br>      &lt;th scope=&quot;col&quot; width=&quot;40&quot;&gt;操作&lt;/th&gt;<br>    &lt;/<span class="hljs-selector-tag">tr</span>&gt;<br>    &lt;<span class="hljs-selector-tag">tr</span>&gt;<br>      &lt;<span class="hljs-selector-tag">td</span>&gt;内容<span class="hljs-number">1</span>&lt;/<span class="hljs-selector-tag">td</span>&gt;<br>      &lt;<span class="hljs-selector-tag">td</span>&gt;内容<span class="hljs-number">2</span>&lt;/<span class="hljs-selector-tag">td</span>&gt;<br>      &lt;td&gt;&lt;a href class=&quot;icon-delete&quot; data-title=&quot;删除&quot;&gt;删除&lt;/a&gt;&lt;/td&gt;<br>    &lt;/<span class="hljs-selector-tag">tr</span>&gt;<br>    &lt;<span class="hljs-selector-tag">tr</span>&gt;<br>      &lt;<span class="hljs-selector-tag">td</span>&gt;内容<span class="hljs-number">3</span>&lt;/<span class="hljs-selector-tag">td</span>&gt;<br>      &lt;<span class="hljs-selector-tag">td</span>&gt;内容<span class="hljs-number">4</span>&lt;/<span class="hljs-selector-tag">td</span>&gt;<br>      &lt;td&gt;&lt;a href class=&quot;icon-delete&quot; data-title=&quot;删除&quot;&gt;删除&lt;/a&gt;&lt;/td&gt;<br>    &lt;/<span class="hljs-selector-tag">tr</span>&gt;<br>&lt;/<span class="hljs-selector-tag">table</span>&gt;<br><br><span class="hljs-selector-class">.icon-delete</span><span class="hljs-selector-pseudo">::before</span>,<br><span class="hljs-selector-class">.icon-delete</span><span class="hljs-selector-pseudo">::after</span> &#123;<br>    <span class="hljs-attribute">transition</span>: visibility <span class="hljs-number">0s</span> .<span class="hljs-number">2s</span>;<br>    <span class="hljs-attribute">visibility</span>: hidden;<br>&#125;<br><span class="hljs-selector-class">.icon-delete</span><span class="hljs-selector-pseudo">:hover</span><span class="hljs-selector-pseudo">::before</span>,<br><span class="hljs-selector-class">.icon-delete</span><span class="hljs-selector-pseudo">:hover</span><span class="hljs-selector-pseudo">::after</span> &#123;<br>    <span class="hljs-attribute">visibility</span>: visible;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="7-1-2-非子元素的-hover显示"><a href="#7-1-2-非子元素的-hover显示" class="headerlink" title="7.1.2 非子元素的:hover显示"></a>7.1.2 非子元素的:hover显示</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs css">&lt;<span class="hljs-selector-tag">a</span> href&gt;图片链接&lt;/<span class="hljs-selector-tag">a</span>&gt;<br>&lt;img src=&quot;1.jpg&quot;&gt;<br><br><span class="hljs-selector-tag">img</span> &#123;<br>    <span class="hljs-attribute">display</span>: none;<br>    <span class="hljs-attribute">position</span>: absolute;<br>    <span class="hljs-attribute">z-index</span>: <span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> + <span class="hljs-selector-tag">img</span>,<br><span class="hljs-selector-tag">img</span><span class="hljs-selector-pseudo">:hover</span> &#123;<br>    <span class="hljs-attribute">display</span>: inline;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><code>transition</code>对<code>display</code>无过渡效果，对<code>visibility</code>有过渡效果</p>
+<h4 id="7-1-3-纯-hover显示浮层的体验问题"><a href="#7-1-3-纯-hover显示浮层的体验问题" class="headerlink" title="7.1.3 纯:hover显示浮层的体验问题"></a>7.1.3 纯:hover显示浮层的体验问题</h4><p>使用<code>:focus</code>避免用户没有鼠标，无法触发<code>:hover</code>的情况</p>
+<h3 id="7-2激活状态伪类-active"><a href="#7-2激活状态伪类-active" class="headerlink" title="7.2激活状态伪类:active"></a>7.2激活状态伪类:active</h3><h4 id="7-2-1-active伪类概述"><a href="#7-2-1-active伪类概述" class="headerlink" title="7.2.1:active伪类概述"></a>7.2.1:active伪类概述</h4><h4 id="7-2-2按钮的通用-active样式技巧"><a href="#7-2-2按钮的通用-active样式技巧" class="headerlink" title="7.2.2按钮的通用:active样式技巧"></a>7.2.2按钮的通用:active样式技巧</h4><ul>
+<li>适用于移动端开发<ul>
+<li>使用<code>box-shadow</code>处理反馈</li>
+<li>使用线性渐变<code>linear-gradient</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="7-3焦点伪类-focus"><a href="#7-3焦点伪类-focus" class="headerlink" title="7.3焦点伪类:focus"></a>7.3焦点伪类:focus</h3><h4 id="7-3-1-focus伪类匹配机制"><a href="#7-3-1-focus伪类匹配机制" class="headerlink" title="7.3.1:focus伪类匹配机制"></a>7.3.1:focus伪类匹配机制</h4><p>只能匹配特定的元素，如</p>
+<ul>
+<li>非disable状态的表单元素，如<code>&lt;input&gt;</code>输入框，<code>&lt;select&gt;</code>下拉框，<code>&lt;button&gt;</code>按钮</li>
+<li>包含<code>&lt;herf&gt;</code>的<code>&lt;a&gt;</code>元素</li>
+<li><code>&lt;summary&gt;</code></li>
+<li><code>&lt;area&gt;</code></li>
+</ul>
+<h4 id="7-3-2-focus伪类与outline"><a href="#7-3-2-focus伪类与outline" class="headerlink" title="7.3.2:focus伪类与outline"></a>7.3.2:focus伪类与outline</h4><p>设置<code>ontline:none</code>后，最好添加一个样式，如<code>border-color:HighLight</code>,防止用户使用键盘输入时没有响应。</p>
+<h4 id="7-3-3-CSS-focus伪类与键盘无障碍访问"><a href="#7-3-3-CSS-focus伪类与键盘无障碍访问" class="headerlink" title="7.3.3 CSS:focus伪类与键盘无障碍访问"></a>7.3.3 CSS:focus伪类与键盘无障碍访问</h4><h3 id="7-4整体焦点伪类-focus-within"><a href="#7-4整体焦点伪类-focus-within" class="headerlink" title="7.4整体焦点伪类:focus-within"></a>7.4整体焦点伪类:focus-within</h3><h4 id="7-4-1-focus-within和-focus伪类的区别"><a href="#7-4-1-focus-within和-focus伪类的区别" class="headerlink" title="7.4.1 :focus-within和:focus伪类的区别"></a>7.4.1 :focus-within和:focus伪类的区别</h4><p>:focus：当前元素处于聚焦样式才会匹配</p>
+<p> :focus-within：当前元素或任意子元素处于聚焦样式会匹配</p>
+<h4 id="7-4-2-focus-within实现无障碍访问的下拉列表"><a href="#7-4-2-focus-within实现无障碍访问的下拉列表" class="headerlink" title="7.4.2 :focus-within实现无障碍访问的下拉列表"></a>7.4.2 :focus-within实现无障碍访问的下拉列表</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;cs-bar&quot;</span>&gt;</span>         <br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;cs-details&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;javascript:&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;cs-summary&quot;</span>&gt;</span>我的消息<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> <br>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;cs-datalist&quot;</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;cs-datalist-a&quot;</span>&gt;</span>我的回答<span class="hljs-tag">&lt;<span class="hljs-name">sup</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;cs-datalist-sup&quot;</span>&gt;</span>12<span class="hljs-tag">&lt;/<span class="hljs-name">sup</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;cs-datalist-a&quot;</span>&gt;</span>我的私信<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;cs-datalist-a&quot;</span>&gt;</span>未评价订单<span class="hljs-tag">&lt;<span class="hljs-name">sup</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;cs-datalist-sup&quot;</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-name">sup</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;cs-datalist-a&quot;</span>&gt;</span>我的关注<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br><br><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><br>.cs-bar &#123;<br><span class="css">    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#e3e4e5</span>;</span><br><span class="css">    <span class="hljs-attribute">color</span>: <span class="hljs-number">#888</span>;</span><br><span class="css">    <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">40px</span>;</span><br>&#125;<br>.cs-details &#123;<br><span class="css">    <span class="hljs-attribute">display</span>: inline-block;</span><br><span class="css">    <span class="hljs-attribute">text-align</span>: left;</span><br>&#125;<br>.cs-summary &#123;<br><span class="css">    <span class="hljs-attribute">display</span>: inline-block;</span><br><span class="css">    <span class="hljs-attribute">padding</span>: <span class="hljs-number">5px</span> <span class="hljs-number">28px</span>;</span><br><span class="css">    <span class="hljs-attribute">text-indent</span>: -<span class="hljs-number">15px</span>;</span><br><span class="css">    user-select: none;</span><br><span class="css">    <span class="hljs-attribute">position</span>: relative;</span><br><span class="css">    <span class="hljs-attribute">z-index</span>: <span class="hljs-number">1</span>;</span><br>&#125;<br><span class="css"><span class="hljs-selector-class">.cs-summary</span><span class="hljs-selector-pseudo">::after</span> &#123;</span><br><span class="css">    <span class="hljs-attribute">content</span>: <span class="hljs-string">&quot;&quot;</span>;</span><br><span class="css">    <span class="hljs-attribute">position</span>: absolute;</span><br><span class="css">    <span class="hljs-attribute">width</span>: <span class="hljs-number">12px</span>; <span class="hljs-attribute">height</span>: <span class="hljs-number">12px</span>;</span><br><span class="css">    <span class="hljs-attribute">margin</span>: <span class="hljs-number">4px</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> .<span class="hljs-number">5ch</span>;</span><br><span class="css">    <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">./icon-arrow.svg</span>) no-repeat;</span><br><span class="css">    <span class="hljs-attribute">background-size</span>: <span class="hljs-number">100%</span> <span class="hljs-number">100%</span>;</span><br><span class="css">    <span class="hljs-attribute">transition</span>: transform .<span class="hljs-number">2s</span>;</span><br>&#125;<br><span class="css"><span class="hljs-selector-class">.cs-details</span><span class="hljs-selector-pseudo">:focus</span>-within <span class="hljs-selector-class">.cs-summary</span>,</span><br><span class="css"><span class="hljs-selector-class">.cs-summary</span><span class="hljs-selector-pseudo">:hover</span> &#123;</span><br><span class="css">    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#fff</span>;</span><br><span class="css">    <span class="hljs-attribute">box-shadow</span>: inset <span class="hljs-number">1px</span> <span class="hljs-number">0</span> <span class="hljs-number">#ddd</span>, inset -<span class="hljs-number">1px</span> <span class="hljs-number">0</span> <span class="hljs-number">#ddd</span>;</span><br>&#125;<br><span class="css"><span class="hljs-selector-class">.cs-details</span><span class="hljs-selector-pseudo">:focus</span>-within <span class="hljs-selector-class">.cs-summary</span><span class="hljs-selector-pseudo">::after</span> &#123;</span><br><span class="css">    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotate</span>(<span class="hljs-number">180deg</span>);</span><br>&#125;<br>.cs-datalist &#123;<br><span class="css">    <span class="hljs-attribute">display</span>: none;</span><br><span class="css">    <span class="hljs-attribute">position</span>: absolute;</span><br><span class="css">    <span class="hljs-attribute">min-width</span>: <span class="hljs-number">100px</span>;</span><br><span class="css">    <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#ddd</span>;</span><br><span class="css">    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#fff</span>;</span><br><span class="css">    <span class="hljs-attribute">margin-top</span>: -<span class="hljs-number">1px</span>;</span><br>&#125;<br><span class="css"><span class="hljs-selector-class">.cs-details</span><span class="hljs-selector-pseudo">:focus</span>-within <span class="hljs-selector-class">.cs-datalist</span> &#123;</span><br><span class="css">    <span class="hljs-attribute">display</span>: block;</span><br>&#125;<br>.cs-datalist-a &#123;<br><span class="css">    <span class="hljs-attribute">display</span>: block;</span><br><span class="css">    <span class="hljs-attribute">padding</span>: <span class="hljs-number">5px</span> <span class="hljs-number">10px</span>;</span><br><span class="css">    <span class="hljs-attribute">transition</span>: background-color .<span class="hljs-number">2s</span>, color .<span class="hljs-number">2s</span>;</span><br><span class="css">    <span class="hljs-attribute">color</span>: inherit;</span><br>&#125;<br><span class="css"><span class="hljs-selector-class">.cs-datalist-a</span><span class="hljs-selector-pseudo">:hover</span> &#123;</span><br><span class="css">    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f5f5f5</span>;</span><br>&#125;<br><span class="css"><span class="hljs-selector-class">.cs-datalist-a</span><span class="hljs-selector-pseudo">:active</span> &#123;</span><br><span class="css">    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f0f0f0</span>;</span><br><span class="css">    <span class="hljs-attribute">color</span>: <span class="hljs-number">#555</span>;</span><br>&#125;<br>.cs-datalist-sup &#123;<br><span class="css">    <span class="hljs-attribute">position</span>: absolute;</span><br><span class="css">    <span class="hljs-attribute">color</span>: <span class="hljs-number">#cd0000</span>;</span><br><span class="css">    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">12px</span>;</span><br><span class="css">    <span class="hljs-attribute">margin-top</span>: -.<span class="hljs-number">25em</span>;</span><br><span class="css">    <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">2px</span>;</span><br>&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="7-5键盘焦点伪类-focus-visible"><a href="#7-5键盘焦点伪类-focus-visible" class="headerlink" title="7.5键盘焦点伪类:focus-visible"></a>7.5键盘焦点伪类:focus-visible</h3><p>鼠标访问时不会有焦点轮廓，但键盘tab键访问时会有。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs css">&lt;style&gt;<br><span class="hljs-selector-class">.cs-button</span> &#123;<br>    <span class="hljs-attribute">background-color</span>: teal;<br>    <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;<br>    <span class="hljs-attribute">border</span>: <span class="hljs-number">0</span>;<br>    <span class="hljs-attribute">padding</span>: .<span class="hljs-number">75em</span> <span class="hljs-number">2em</span>;<br>&#125;<br><br><span class="hljs-selector-class">.focus-better</span> <span class="hljs-selector-pseudo">:focus</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-pseudo">:focus</span>-visible) &#123;<br>    <span class="hljs-attribute">outline</span>: <span class="hljs-number">0</span>;<br>&#125;<br>&lt;/style&gt;<br><br>&lt;<span class="hljs-selector-tag">h4</span>&gt;原始状态（点击访问）&lt;/<span class="hljs-selector-tag">h4</span>&gt;<br>&lt;ol class=&quot;demical&quot;&gt;<br>    &lt;li&gt;&lt;button class=&quot;cs-button&quot;&gt;按钮&lt;/button&gt;&lt;/li&gt;<br>    &lt;<span class="hljs-selector-tag">li</span>&gt;<br>        &lt;<span class="hljs-selector-tag">details</span>&gt;<br>            &lt;<span class="hljs-selector-tag">summary</span>&gt;<span class="hljs-selector-tag">summary</span>元素&lt;/<span class="hljs-selector-tag">summary</span>&gt;<br>            &lt;<span class="hljs-selector-tag">p</span>&gt;Chrome浏览器下点击会出现焦点轮廓。&lt;/<span class="hljs-selector-tag">p</span>&gt;<br>        &lt;/<span class="hljs-selector-tag">details</span>&gt;<br>    &lt;/<span class="hljs-selector-tag">li</span>&gt;<br>    &lt;<span class="hljs-selector-tag">li</span>&gt;<br>        &lt;div tabindex=&quot;0&quot;&gt;我是设置了&lt;code&gt;tabindex=&quot;0&quot;&lt;/code&gt;的普通div元素。&lt;/div&gt;<br>    &lt;/<span class="hljs-selector-tag">li</span>&gt;<br>&lt;/<span class="hljs-selector-tag">ol</span>&gt;<br><br>&lt;<span class="hljs-selector-tag">h4</span>&gt;<span class="hljs-selector-pseudo">:focus</span>-visible优化后（Tab键访问）&lt;/<span class="hljs-selector-tag">h4</span>&gt;<br>&lt;ol class=&quot;demical focus-better&quot;&gt;<br>    &lt;li&gt;&lt;button class=&quot;cs-button&quot;&gt;按钮&lt;/button&gt;&lt;/li&gt;<br>    &lt;<span class="hljs-selector-tag">li</span>&gt;<br>        &lt;<span class="hljs-selector-tag">details</span>&gt;<br>            &lt;<span class="hljs-selector-tag">summary</span>&gt;<span class="hljs-selector-tag">summary</span>元素&lt;/<span class="hljs-selector-tag">summary</span>&gt;<br>            &lt;<span class="hljs-selector-tag">p</span>&gt;Chrome浏览器下点击不会出现焦点轮廓。&lt;/<span class="hljs-selector-tag">p</span>&gt;<br>        &lt;/<span class="hljs-selector-tag">details</span>&gt;<br>    &lt;/<span class="hljs-selector-tag">li</span>&gt;<br>    &lt;<span class="hljs-selector-tag">li</span>&gt;<br>        &lt;div tabindex=&quot;0&quot;&gt;我是设置了&lt;code&gt;tabindex=&quot;0&quot;&lt;/code&gt;的普通div元素。&lt;/div&gt;<br>    &lt;/<span class="hljs-selector-tag">li</span>&gt;<br>&lt;/<span class="hljs-selector-tag">ol</span>&gt;<br><br><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="8-URL定位伪类"><a href="#8-URL定位伪类" class="headerlink" title="8 URL定位伪类"></a>8 URL定位伪类</h2><h3 id="8-1链接历史伪类-link和-visited"><a href="#8-1链接历史伪类-link和-visited" class="headerlink" title="8.1链接历史伪类:link和:visited"></a>8.1链接历史伪类:link和:visited</h3><h4 id="8-1-1深入理解-link"><a href="#8-1-1深入理解-link" class="headerlink" title="8.1.1深入理解:link"></a>8.1.1深入理解:link</h4><p>:link匹配页面上链接没有访问过的<code>&lt;a&gt;</code>元素</p>
+<h4 id="8-1-2-怪癖最多的CSS伪类-visited"><a href="#8-1-2-怪癖最多的CSS伪类-visited" class="headerlink" title="8.1.2 怪癖最多的CSS伪类:visited"></a>8.1.2 怪癖最多的CSS伪类:visited</h4><ul>
+<li><p>支持的CSS属性有限</p>
+</li>
+<li><p>支持子选择器</p>
+</li>
+<li><p>没有半透明</p>
+</li>
+<li><p>只能重置，不能凭空设置</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>&gt;</span>link<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br>/*不会出现背景色*/<br>a&#123;color:blue&#125;<br>a:visited&#123;color:red;background:grey&#125;<br>/*会出现背景色*/<br>a&#123;color:blue;background:write&#125;<br>a:visited&#123;color:red;background:grey&#125;<br><br></code></pre></td></tr></table></figure></li>
+<li><p>无法获取：visited的设置和呈现的色值</p>
+</li>
+</ul>
+<h3 id="8-2超链接伪类-any-link"><a href="#8-2超链接伪类-any-link" class="headerlink" title="8.2超链接伪类:any-link"></a>8.2超链接伪类:any-link</h3><ul>
+<li>匹配所有设置了href的链接元素</li>
+<li>匹配所有匹配<code>:link</code>  <code>:visited</code> 的元素</li>
+</ul>
+<h3 id="8-3目标伪类-target"><a href="#8-3目标伪类-target" class="headerlink" title="8.3目标伪类:target"></a>8.3目标伪类:target</h3><h4 id="8-3-1-target与锚点"><a href="#8-3-1-target与锚点" class="headerlink" title="8.3.1:target与锚点"></a>8.3.1:target与锚点</h4><h4 id="8-3-2-target交互布局技术简介"><a href="#8-3-2-target交互布局技术简介" class="headerlink" title="8.3.2:target交互布局技术简介"></a>8.3.2:target交互布局技术简介</h4><h3 id="8-4目标容器伪类-target-within"><a href="#8-4目标容器伪类-target-within" class="headerlink" title="8.4目标容器伪类:target-within"></a>8.4目标容器伪类:target-within</h3><h2 id="9-输入伪类"><a href="#9-输入伪类" class="headerlink" title="9 输入伪类"></a>9 输入伪类</h2><h3 id="9-1输入控件状态"><a href="#9-1输入控件状态" class="headerlink" title="9.1输入控件状态"></a>9.1输入控件状态</h3><h4 id="9-1-1可用状态与禁用状态伪类-enabled和-disabled"><a href="#9-1-1可用状态与禁用状态伪类-enabled和-disabled" class="headerlink" title="9.1.1可用状态与禁用状态伪类:enabled和:disabled"></a>9.1.1可用状态与禁用状态伪类:enabled和:disabled</h4><h4 id="9-1-2读写特性伪类-read-only和-read-write"><a href="#9-1-2读写特性伪类-read-only和-read-write" class="headerlink" title="9.1.2读写特性伪类:read-only和:read-write"></a>9.1.2读写特性伪类:read-only和:read-write</h4><h4 id="9-1-3占位符显示伪类-placeholder-shown"><a href="#9-1-3占位符显示伪类-placeholder-shown" class="headerlink" title="9.1.3占位符显示伪类:placeholder-shown"></a>9.1.3占位符显示伪类:placeholder-shown</h4><h4 id="9-1-4默认选项伪类-default"><a href="#9-1-4默认选项伪类-default" class="headerlink" title="9.1.4默认选项伪类:default"></a>9.1.4默认选项伪类:default</h4><h3 id="9-2-输入值状态"><a href="#9-2-输入值状态" class="headerlink" title="9.2 输入值状态"></a>9.2 输入值状态</h3><p>与单选框和复选框相关：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lua">&lt;<span class="hljs-built_in">input</span> <span class="hljs-built_in">type</span>=<span class="hljs-string">&quot;radio&quot;</span>&gt;&lt;<span class="hljs-built_in">input</span> <span class="hljs-built_in">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span>&gt;<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="9-2-1选中选项伪类-checked"><a href="#9-2-1选中选项伪类-checked" class="headerlink" title="9.2.1选中选项伪类:checked"></a>9.2.1选中选项伪类:checked</h4><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cs">input:checked&#123;<br><span class="hljs-comment">//定义样式</span><br>box-shadow:<span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">2</span>px red;<br>&#125;<br>&lt;input type=<span class="hljs-string">&quot;checkbox&quot;</span>&gt;<br>&lt;input type=<span class="hljs-string">&quot;checkbox &quot;</span> checked&gt;<br></code></pre></td></tr></table></figure>
+
+<p>相当于</p>
+<p><code>input[checked]&#123;box-shadow:0 0 0 2px red;&#125;</code></p>
+<h4 id="9-2-2不确定值伪类-indeterminate"><a href="#9-2-2不确定值伪类-indeterminate" class="headerlink" title="9.2.2不确定值伪类:indeterminate"></a>9.2.2不确定值伪类:indeterminate</h4><p><a target="_blank" rel="noopener" href="https://demo.cssworld.cn/selector/9/2-6.php">复选框半选示例</a></p>
+<p><a target="_blank" rel="noopener" href="https://demo.cssworld.cn/selector/9/2-7.php">复选框提示未选择示例</a></p>
+<h3 id="9-3输入值验证"><a href="#9-3输入值验证" class="headerlink" title="9.3输入值验证"></a>9.3输入值验证</h3><h4 id="9-3-1有效性验证伪类-valid和-invalid"><a href="#9-3-1有效性验证伪类-valid和-invalid" class="headerlink" title="9.3.1有效性验证伪类:valid和:invalid"></a>9.3.1有效性验证伪类:valid和:invalid</h4><h4 id="9-3-2-范围验证伪类-in-range-和-out-of-range"><a href="#9-3-2-范围验证伪类-in-range-和-out-of-range" class="headerlink" title="9.3.2 范围验证伪类:in-range 和:out-of-range"></a>9.3.2 范围验证伪类:in-range 和:out-of-range</h4><h4 id="9-3-3可选性伪类-required和-optional"><a href="#9-3-3可选性伪类-required和-optional" class="headerlink" title="9.3.3可选性伪类:required和:optional"></a>9.3.3可选性伪类:required和:optional</h4><h4 id="9-3-4用户交互伪类-user-invalid和空值伪类-blank"><a href="#9-3-4用户交互伪类-user-invalid和空值伪类-blank" class="headerlink" title="9.3.4用户交互伪类:user-invalid和空值伪类:blank"></a>9.3.4用户交互伪类:user-invalid和空值伪类:blank</h4><h2 id="10-树结构伪类"><a href="#10-树结构伪类" class="headerlink" title="10 树结构伪类"></a>10 树结构伪类</h2><h3 id="10-1-root伪类"><a href="#10-1-root伪类" class="headerlink" title="10.1:root伪类"></a>10.1:root伪类</h3><h4 id="10-1-1-root伪类和-lt-html-gt-元素"><a href="#10-1-1-root伪类和-lt-html-gt-元素" class="headerlink" title="10.1.1:root伪类和&lt;html&gt;元素"></a>10.1.1:root伪类和<code>&lt;html&gt;</code>元素</h4><p>root伪类表示文档根元素</p>
+<h4 id="10-1-2-root伪类的应用场景"><a href="#10-1-2-root伪类的应用场景" class="headerlink" title="10.1.2:root伪类的应用场景"></a>10.1.2:root伪类的应用场景</h4><ul>
+<li><p>滚动条出现时页面不跳动</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/*IE 8*/</span><br><span class="hljs-selector-tag">html</span>&#123;<br><span class="hljs-attribute">overflow-y</span>:scroll;<br>&#125;<br><span class="hljs-comment">/*IE 9+*/</span><br><span class="hljs-selector-pseudo">:root</span>&#123;<br><span class="hljs-attribute">overflow-x</span>:hidden;<br>&#125;<br><span class="hljs-selector-pseudo">:root</span> <span class="hljs-selector-tag">body</span>&#123;<br><span class="hljs-attribute">position</span> :absolute;<br><span class="hljs-attribute">width</span>: <span class="hljs-number">100vw</span>;<br><span class="hljs-attribute">overflow</span>:hidden;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>定义CSS变量</p>
+</li>
+</ul>
+<h3 id="10-2-empty伪类"><a href="#10-2-empty伪类" class="headerlink" title="10.2:empty伪类"></a>10.2:empty伪类</h3><p>匹配空标签元素</p>
+<p>匹配前后闭合的替换元素</p>
+<p>匹配非闭合元素</p>
+<h4 id="10-2-1对-empty伪类可能的误解"><a href="#10-2-1对-empty伪类可能的误解" class="headerlink" title="10.2.1对:empty伪类可能的误解"></a>10.2.1对:empty伪类可能的误解</h4><ul>
+<li>元素内有注释则不匹配</li>
+<li>元素内有空格或标签或换行则不匹配</li>
+<li>元素内有注释则不匹配</li>
+</ul>
+<h4 id="10-2-2超实用超高频使用的-empty伪类"><a href="#10-2-2超实用超高频使用的-empty伪类" class="headerlink" title="10.2.2超实用超高频使用的:empty伪类"></a>10.2.2超实用超高频使用的:empty伪类</h4><ul>
+<li>字段缺失智能提示</li>
+</ul>
+<h3 id="10-3-子索引伪类"><a href="#10-3-子索引伪类" class="headerlink" title="10.3 子索引伪类"></a>10.3 子索引伪类</h3><h4 id="10-3-1-first-child伪类和-last-child伪类"><a href="#10-3-1-first-child伪类和-last-child伪类" class="headerlink" title="10.3.1 :first-child伪类和:last-child伪类"></a>10.3.1 :first-child伪类和:last-child伪类</h4><p><code>:first-child</code>伪类匹配第一个子元素</p>
+<p><code>:last-child</code>伪类匹配最后一个子元素</p>
+<h4 id="10-3-2-only-child伪类"><a href="#10-3-2-only-child伪类" class="headerlink" title="10.3.2 :only-child伪类"></a>10.3.2 :only-child伪类</h4><p>匹配没有任何兄弟的元素</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- 1. 只有加载图片 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;cs-loading&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;./loading.png&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;cs-loading-img&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-comment">&lt;!-- 2. 只有加载文字 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;cs-loading&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;cs-loading-p&quot;</span>&gt;</span>正在加载中...<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-comment">&lt;!-- 3. 加载图片和加载文字同时存在 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;cs-loading&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;./loading.png&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;cs-loading-img&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;cs-loading-p&quot;</span>&gt;</span>正在加载中...<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><br>.cs-loading &#123;<br><span class="css">    <span class="hljs-attribute">height</span>: <span class="hljs-number">150px</span>;</span><br><span class="css">    <span class="hljs-attribute">position</span>: relative;</span><br><span class="css">    <span class="hljs-attribute">text-align</span>: center;</span><br><span class="css">    <span class="hljs-comment">/* 与截图无关，截图示意用 */</span></span><br><span class="css">    <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> dotted;</span><br>&#125;<br><span class="css"><span class="hljs-comment">/* 图片和文字同时存在时在中间留点间距 */</span></span><br>.cs-loading-img &#123;<br><span class="css">    <span class="hljs-attribute">width</span>: <span class="hljs-number">32px</span>; <span class="hljs-attribute">height</span>: <span class="hljs-number">32px</span>;</span><br><span class="css">    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">45px</span>;</span><br><span class="css">    <span class="hljs-attribute">vertical-align</span>: bottom;</span><br>&#125;<br>.cs-loading-p &#123;<br><span class="css">    <span class="hljs-attribute">margin</span>: .<span class="hljs-number">5em</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span>;</span><br><span class="css">    <span class="hljs-attribute">color</span>: gray;</span><br>&#125;<br><span class="css"><span class="hljs-comment">/* 只有图片的时候居中绝对定位 */</span></span><br><span class="css"><span class="hljs-selector-class">.cs-loading-img</span><span class="hljs-selector-pseudo">:only-child</span> &#123;</span><br><span class="css">    <span class="hljs-attribute">position</span>: absolute;</span><br><span class="css">    <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>; <span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>; <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>; <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;</span><br><span class="css">    <span class="hljs-attribute">margin</span>: auto;</span><br>&#125;<br><span class="css"><span class="hljs-comment">/* 只有文字的时候行号近似垂直居中 */</span></span><br><span class="css"><span class="hljs-selector-class">.cs-loading-p</span><span class="hljs-selector-pseudo">:only-child</span> &#123;</span><br><span class="css">    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;</span><br><span class="css">    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">150px</span>;</span><br>&#125;<br><br><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="10-3-3-nth-child-伪类和-nth-last-child-伪类"><a href="#10-3-3-nth-child-伪类和-nth-last-child-伪类" class="headerlink" title="10.3.3 :nth-child()伪类和:nth-last-child()伪类"></a>10.3.3 :nth-child()伪类和:nth-last-child()伪类</h4><p> :nth-child()伪类 从前面开始匹配</p>
+<p>:nth-last-child()伪类   从后面开始匹配</p>
+<p>下面来看一些示例，快速了解一下各种类型的参数的含义。<br><code>tr:nth-child(odd)</code>:匹配表格的第1,3,5行，等同于<code>tr:nth-child(2n+1)</code>。</p>
+<p><code> tr:nth-child (even)</code>:匹配表格的第2,4,6行，等同于<code>tr:nth-child(2n)</code>。 </p>
+<p><code>:nth-child(3)</code>:匹配第3个元素。<br><code>:nth-child(5n)</code>:匹配第5,10,15,..个元素。其中5=5x1，10=5x2，15=5x3</p>
+<p> <code>:nth-child(3n+4)</code>:匹配第4,7，10,.个元素。其中4=(3x0)+4，7=(3x1)+4， 10=(3x2)+4..</p>
+<p><code>:nth-child(-n+3):</code>匹配前3个元素。因为-0+3=3，-1+3=2，-2+3-1.</p>
+<p><code>li:nth-child(n):</code>匹配所有的&lt;1i&gt;元素，就匹配的元素而言和li标签选择器一 模一样，区别就是优先级更高了。实际开发总是避免过高的优先级，因此没有任何理 由这么使用。<br><code>li:nth-child(1):</code>匹配第一个<li>元素，和<code>li:first-child</code>匹配的作用一样， 区别就是后者的兼容性更好，因此，也没有任何这么使用的理由，使用<code>:first-child </code>代替它。<br><code>li:nth-child(n+4):nth-child(-n+10):</code>匹配第4~10个<code>&lt;li&gt;</code>元素，这个就 属于比较高级的用法了。例如，考试成绩是前3名的有徽章，第4名到第10名高亮显 示，此时，这种正负值组合的伪类就非常好用。</p>
+<h3 id="10-4匹配类型的子索引伪类"><a href="#10-4匹配类型的子索引伪类" class="headerlink" title="10.4匹配类型的子索引伪类"></a>10.4匹配类型的子索引伪类</h3><h4 id="10-4-1-first-of-type伪类和-last-of-type伪类"><a href="#10-4-1-first-of-type伪类和-last-of-type伪类" class="headerlink" title="10.4.1 :first-of-type伪类和:last-of-type伪类"></a>10.4.1 :first-of-type伪类和:last-of-type伪类</h4><p> :first-of-type 匹配当前标签类型元素的第一个</p>
+<p>:last-of-type伪类 匹配当前标签类型元素的最后一个</p>
+<h4 id="10-4-2-only-of-type伪类"><a href="#10-4-2-only-of-type伪类" class="headerlink" title="10.4.2 :only-of-type伪类"></a>10.4.2 :only-of-type伪类</h4><p> :only-of-type伪类 匹配唯一的标签类型元素</p>
+<h4 id="10-4-3-nth-of-type-伪类和-nth-last-of-type-伪类"><a href="#10-4-3-nth-of-type-伪类和-nth-last-of-type-伪类" class="headerlink" title="10.4.3 :nth-of-type()伪类和:nth-last-of-type()伪类"></a>10.4.3 :nth-of-type()伪类和:nth-last-of-type()伪类</h4><p> :nth-of-type()伪类  匹配指定索引的当前标签元素</p>
+<h2 id="11-逻辑组合伪类"><a href="#11-逻辑组合伪类" class="headerlink" title="11 逻辑组合伪类"></a>11 逻辑组合伪类</h2><h3 id="11-1否定伪类-not"><a href="#11-1否定伪类-not" class="headerlink" title="11.1否定伪类:not()"></a>11.1否定伪类:not()</h3><p>匹配与括号内的选择器匹配不上的元素，如</p>
+<p><code>:not(p)</code> 匹配不是<code>&lt;p&gt;</code>的元素</p>
+<p>可以不断级联，如<code>input:not(disable):not(read-only)&#123;&#125;</code></p>
+<h3 id="11-2了解任意匹配伪类-is"><a href="#11-2了解任意匹配伪类-is" class="headerlink" title="11.2了解任意匹配伪类:is()"></a>11.2了解任意匹配伪类:is()</h3><h4 id="11-2-1-is-伪类与-matches-伪类及-any-伪类之间的关系"><a href="#11-2-1-is-伪类与-matches-伪类及-any-伪类之间的关系" class="headerlink" title="11.2.1 :is()伪类与:matches()伪类及:any()伪类之间的关系"></a>11.2.1 :is()伪类与:matches()伪类及:any()伪类之间的关系</h4><h4 id="11-2-2-is-伪类的语法与作用"><a href="#11-2-2-is-伪类的语法与作用" class="headerlink" title="11.2.2 :is()伪类的语法与作用"></a>11.2.2 :is()伪类的语法与作用</h4><h3 id="11-3了解任意匹配伪类-where"><a href="#11-3了解任意匹配伪类-where" class="headerlink" title="11.3了解任意匹配伪类:where()"></a>11.3了解任意匹配伪类:where()</h3><h3 id="11-4了解关联伪类-has"><a href="#11-4了解关联伪类-has" class="headerlink" title="11.4了解关联伪类:has()"></a>11.4了解关联伪类:has()</h3><h2 id="12-其他伪类选择器"><a href="#12-其他伪类选择器" class="headerlink" title="12 其他伪类选择器"></a>12 其他伪类选择器</h2><h3 id="12-1与作用域相关的伪类"><a href="#12-1与作用域相关的伪类" class="headerlink" title="12.1与作用域相关的伪类"></a>12.1与作用域相关的伪类</h3><h4 id="12-1-1参考元素伪类-scope"><a href="#12-1-1参考元素伪类-scope" class="headerlink" title="12.1.1参考元素伪类:scope"></a>12.1.1参考元素伪类:scope</h4><h4 id="12-1-2-Shadow树根元素伪类-host"><a href="#12-1-2-Shadow树根元素伪类-host" class="headerlink" title="12.1.2 Shadow树根元素伪类:host"></a>12.1.2 Shadow树根元素伪类:host</h4><h4 id="12-1-3-Shadow树根元素匹配伪类-host"><a href="#12-1-3-Shadow树根元素匹配伪类-host" class="headerlink" title="12.1.3 Shadow树根元素匹配伪类:host()"></a>12.1.3 Shadow树根元素匹配伪类:host()</h4><h4 id="12-1-4-Shadow树根元素上下文匹配伪类-host-context"><a href="#12-1-4-Shadow树根元素上下文匹配伪类-host-context" class="headerlink" title="12.1.4 Shadow树根元素上下文匹配伪类:host-context()."></a>12.1.4 Shadow树根元素上下文匹配伪类:host-context().</h4><h3 id="12-2与全屏相关的伪类-fullscreen"><a href="#12-2与全屏相关的伪类-fullscreen" class="headerlink" title="12.2与全屏相关的伪类 :fullscreen"></a>12.2与全屏相关的伪类 :fullscreen</h3><h3 id="12-3-了解语言相关伪类"><a href="#12-3-了解语言相关伪类" class="headerlink" title="12.3 了解语言相关伪类"></a>12.3 了解语言相关伪类</h3><h4 id="12-3-1-方向伪类-dir"><a href="#12-3-1-方向伪类-dir" class="headerlink" title="12.3.1 方向伪类:dir()"></a>12.3.1 方向伪类:dir()</h4><h4 id="12-3-2-语言伪类-lang"><a href="#12-3-2-语言伪类-lang" class="headerlink" title="12.3.2 语言伪类:lang()"></a>12.3.2 语言伪类:lang()</h4><h3 id="12-4-了解资源状态伪类"><a href="#12-4-了解资源状态伪类" class="headerlink" title="12.4 了解资源状态伪类"></a>12.4 了解资源状态伪类</h3>
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2021/02/08/CSS%E9%80%89%E6%8B%A9%E5%99%A8%E4%B8%96%E7%95%8C/" title="CSS 选择器世界" target="_blank" rel="external">http://example.com/2021/02/08/CSS%E9%80%89%E6%8B%A9%E5%99%A8%E4%B8%96%E7%95%8C/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/YukiXueyan" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/YukiXueyan" target="_blank"><span class="text-dark">YukiXueyan</span><small class="ml-1x">一只前端咸鱼酱</small></a></h3>
+        <div>满怀希望就会所向披靡</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2021/02/08/%E7%B2%BE%E9%80%9Acss/" title="精通CSS"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2021/02/02/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="正则表达式"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+        <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/YukiXueyan" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '100' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
