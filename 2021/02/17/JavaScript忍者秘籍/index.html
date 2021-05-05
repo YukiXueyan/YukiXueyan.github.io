@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>JavaScript忍者秘籍 | yukiXueyan</title>
+  <meta name="description" content="JavaScript忍者秘籍入门了解市场上的JavaScript库，如jQuery，prototype，base2 掌握跨浏览器开发。 掌握测试方法。 测试运用日志记录和断点进行调试。console.log() 函数  函数为什么如此重要 函数为什么是第一型对象 浏览器如何调用函数 函数声明 参数赋值之谜 函数上下文   第一型(first-class)对象 函数可以共处，可以被视为任意类型的Ja">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript忍者秘籍">
+<meta property="og:url" content="http://example.com/2021/02/17/JavaScript%E5%BF%8D%E8%80%85%E7%A7%98%E7%B1%8D/index.html">
+<meta property="og:site_name" content="邱雪雁的blog">
+<meta property="og:description" content="JavaScript忍者秘籍入门了解市场上的JavaScript库，如jQuery，prototype，base2 掌握跨浏览器开发。 掌握测试方法。 测试运用日志记录和断点进行调试。console.log() 函数  函数为什么如此重要 函数为什么是第一型对象 浏览器如何调用函数 函数声明 参数赋值之谜 函数上下文   第一型(first-class)对象 函数可以共处，可以被视为任意类型的Ja">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-02-17T08:19:17.000Z">
+<meta property="article:modified_time" content="2021-05-05T06:18:13.812Z">
+<meta property="article:author" content="YukiXueyan">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://example.com/2021/02/17/JavaScript%E5%BF%8D%E8%80%85%E7%A7%98%E7%B1%8D/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="邱雪雁的blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/YukiXueyan" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">YukiXueyan</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">一只前端咸鱼酱</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> scu, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/YukiXueyan" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/android/">android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%B7%E9%A2%98/">刷题</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/">学习日记</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Diary/" rel="tag">Diary</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/" rel="tag">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%B7%E9%A2%98/" rel="tag">刷题</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag">读书笔记</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/CSS/" style="font-size: 13.75px;">CSS</a> <a href="/tags/Diary/" style="font-size: 13.25px;">Diary</a> <a href="/tags/ES6/" style="font-size: 13px;">ES6</a> <a href="/tags/Git/" style="font-size: 13px;">Git</a> <a href="/tags/JavaScript/" style="font-size: 13.5px;">JavaScript</a> <a href="/tags/LeetCode/" style="font-size: 13px;">LeetCode</a> <a href="/tags/Vue/" style="font-size: 13px;">Vue</a> <a href="/tags/android/" style="font-size: 13px;">android</a> <a href="/tags/blog/" style="font-size: 13px;">blog</a> <a href="/tags/hexo/" style="font-size: 13px;">hexo</a> <a href="/tags/%E5%88%B7%E9%A2%98/" style="font-size: 13px;">刷题</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 13px;">正则表达式</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 13px;">计算机网络</a> <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 13.5px;">读书笔记</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 13px;">随笔</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">12</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/05/04/hexo%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/" class="title">hexo主题推荐</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-05-04T11:22:49.000Z" itemprop="datePublished">2021-05-04</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/android/">android</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/05/04/%E3%80%90Android%E3%80%91%E4%BD%BF%E7%94%A8recyclerView-adapter%E5%AE%9E%E7%8E%B0%E6%BB%91%E5%8A%A8%E5%B8%83%E5%B1%80%EF%BC%8C%E5%B9%B6%E6%B7%BB%E5%8A%A0%E7%82%B9%E5%87%BB%E5%92%8C%E9%95%BF%E6%8C%89%E4%BA%8B%E4%BB%B6/" class="title">【Android】使用recyclerView+adapter实现滑动布局，并添加点击和长按事件</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-05-04T05:08:26.000Z" itemprop="datePublished">2021-05-04</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/03/31/0331%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/" class="title">0331面试总结</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-03-31T09:39:25.000Z" itemprop="datePublished">2021-03-31</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/03/21/%E5%9B%BE%E8%A7%A3HTTP/" class="title">图解HTTP</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-03-21T13:47:19.000Z" itemprop="datePublished">2021-03-21</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/03/15/ES6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="title">ES6学习笔记</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-03-15T12:58:45.000Z" itemprop="datePublished">2021-03-15</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-JavaScript忍者秘籍" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript忍者秘籍
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2021/02/17/JavaScript%E5%BF%8D%E8%80%85%E7%A7%98%E7%B1%8D/" class="article-date">
+	  <time datetime="2021-02-17T08:19:17.000Z" itemprop="datePublished">2021-02-17</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/JavaScript/" rel="tag">JavaScript</a>, <a class="article-tag-link-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/02/17/JavaScript%E5%BF%8D%E8%80%85%E7%A7%98%E7%B1%8D/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.6k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 7(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="JavaScript忍者秘籍"><a href="#JavaScript忍者秘籍" class="headerlink" title="JavaScript忍者秘籍"></a>JavaScript忍者秘籍</h1><h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><p>了解市场上的JavaScript库，如jQuery，prototype，base2</p>
+<p>掌握跨浏览器开发。</p>
+<p>掌握测试方法。</p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>运用日志记录和断点进行调试。<code>console.log()</code></p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><blockquote>
+<ul>
+<li>函数为什么如此重要</li>
+<li>函数为什么是第一型对象</li>
+<li>浏览器如何调用函数</li>
+<li>函数声明</li>
+<li>参数赋值之谜</li>
+<li>函数上下文</li>
+</ul>
+</blockquote>
+<p>第一型(first-class)对象</p>
+<p>函数可以共处，可以被视为任意类型的JavaScript变量，被任意变量进行引用，或进行传递。</p>
+<p>浏览器的事件轮询是单线程的，遵循FIFO顺序（先进先出）。</p>
+<p><code>window.onload()</code>调用函数</p>
+<h3 id="函数作用域"><a href="#函数作用域" class="headerlink" title="函数作用域"></a>函数作用域</h3><h3 id="函数调用"><a href="#函数调用" class="headerlink" title="函数调用"></a>函数调用</h3><ul>
+<li>作为一个函数被调用</li>
+<li>作为一个方法被调用，在对象上进行调用，支持面向对象编程</li>
+<li>作为<strong>构造器</strong>进行调用</li>
+<li>通过apply()或call()进行调用</li>
+</ul>
+<h3 id="参数声明"><a href="#参数声明" class="headerlink" title="参数声明"></a>参数声明</h3><ul>
+<li>如果声明的参数数量大于实际传递的参数数量，则没有对应参数的形参会声明为undefined</li>
+<li>如果声明的参数数量小于实际传递的参数数量，超出的参数则不会配给形参名称</li>
+<li><strong>隐式参数：argument，this</strong></li>
+</ul>
+<h3 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h3><h2 id="挥舞函-数"><a href="#挥舞函-数" class="headerlink" title="挥舞函 数"></a>挥舞函 数</h2><blockquote>
+<ul>
+<li>匿名函数为什么如此重要</li>
+<li>函数调用时的引用形式，包括递归</li>
+<li>函数引用的存储</li>
+<li>函数上下文的利用</li>
+<li>处理可变长度的参数列表</li>
+<li>判断一个对象是否是函数</li>
+</ul>
+</blockquote>
+<h3 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h3><h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="string">&quot;hi&quot;</span>);&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> ninja = &#123;</span><br><span class="line">    shout:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;hi&quot;</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line">ninja.shout();</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(</span><br><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hi&quot;</span>);</span><br><span class="line">&#125;,<span class="number">500</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="对象中的方法递归"><a href="#对象中的方法递归" class="headerlink" title="对象中的方法递归"></a>对象中的方法递归</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ninja = &#123;</span><br><span class="line">    chirp:<span class="function"><span class="keyword">function</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">    	<span class="keyword">return</span> n &gt; <span class="number">1</span>?ninja.chirp(n-<span class="number">1</span>)+<span class="string">&quot;-chirp&quot;</span>:<span class="string">&quot;chirp&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">assert(ninja.chirp(<span class="number">3</span>) == <span class="string">&quot;chirp-chirp-chirp&quot;</span>,<span class="string">&quot;。。。&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="存储一组独立的函数"><a href="#存储一组独立的函数" class="headerlink" title="存储一组独立的函数"></a>存储一组独立的函数</h4><h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>一个简单的闭包</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> outerValue = <span class="string">&#x27;ninja&#x27;</span>;</span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="keyword">function</span> <span class="title">outerFunction</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.assert(outerValue == <span class="string">&quot;ninja&quot;</span>,<span class="string">&quot;i can see the ninja&quot;</span>);</span></span><br><span class="line">        &#125;</span><br><span class="line">        outerFunction();</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>一个不那么简单的闭包</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> outerValue = <span class="string">&#x27;ninja&#x27;</span>;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> later;</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">outerFunction</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> innerValue = <span class="string">&#x27;samurai&#x27;</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">        <span class="function"><span class="keyword">function</span> <span class="title">innerFunction</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.assert(outerValue,<span class="string">&quot;i can see ninja&quot;</span>);</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.assert(innerValue,<span class="string">&quot;i can see samurai&quot;</span>);</span></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        later = innerFunction;</span><br><span class="line">    &#125;</span><br><span class="line">    outerFunction();</span><br><span class="line">    later();</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>使用闭包模拟私有变量</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">   <span class="function"><span class="keyword">function</span> <span class="title">Ninja</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">       <span class="keyword">var</span> feints = <span class="number">0</span>;</span></span><br><span class="line"><span class="javascript">       <span class="built_in">this</span>.getFeints = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">           <span class="keyword">return</span> feints;</span></span><br><span class="line">       &#125;;</span><br><span class="line"></span><br><span class="line"><span class="javascript">       <span class="built_in">this</span>.feint = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line">            feints++;</span><br><span class="line">        &#125;;</span><br><span class="line">        </span><br><span class="line">   &#125;</span><br><span class="line"><span class="javascript">   <span class="keyword">var</span> ninja = <span class="keyword">new</span> Ninja();</span></span><br><span class="line">   ninja.feint();</span><br><span class="line"></span><br><span class="line"><span class="javascript">   <span class="built_in">console</span>.assert(ninja.getFeints()==<span class="number">1</span>,<span class="string">&quot;internal feint count&quot;</span>);</span></span><br><span class="line"><span class="javascript">   <span class="built_in">console</span>.assert(ninja.feints==<span class="literal">undefined</span>,<span class="string">&quot;data is inaccessible&quot;</span>);</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>另一个使用闭包的最常见情形就是处理回调或使用定时器。</p>
+<h2 id="原型与面向对象"><a href="#原型与面向对象" class="headerlink" title="原型与面向对象"></a>原型与面向对象</h2><blockquote>
+<ul>
+<li>利用函数实现构造器</li>
+<li>探索原型</li>
+<li>利用原型实现对象的扩展</li>
+<li>避免常见的问题</li>
+<li>构建可继承的类</li>
+</ul>
+</blockquote>
+<h3 id="利用原型方法创建一个新实例"><a href="#利用原型方法创建一个新实例" class="headerlink" title="利用原型方法创建一个新实例"></a>利用原型方法创建一个新实例</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">Ninja</span>(<span class="params"></span>)</span>&#123;&#125;;</span></span><br><span class="line">    </span><br><span class="line"><span class="javascript">    Ninja.prototype.swingSword = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">return</span> <span class="literal">true</span>;</span></span><br><span class="line">    &#125;;</span><br><span class="line"><span class="javascript">    <span class="comment">//函数作为函数进行调用</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> ninja1 = Ninja();</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.assert(ninja1 === underfined,<span class="string">&quot;no instance of ninja created&quot;</span>)</span></span><br><span class="line"><span class="javascript">    <span class="comment">//函数作为构造器进行调用</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> ninja2 = <span class="keyword">new</span> Ninja();</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.assert(ninja2&amp;&amp;ninja2.swingSword&amp;&amp;ninja2.swingSword(),<span class="string">&quot;instance exists and method is callable&quot;</span>);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="继承与原型链"><a href="#继承与原型链" class="headerlink" title="继承与原型链"></a>继承与原型链</h3><p>通过prototype，让ninja拥有person的跳舞能力。但ninja不是一个Person</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123; &#125;;</span></span><br><span class="line"><span class="javascript">    Person.prototype.dance = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">Ninja</span>(<span class="params"></span>)</span>&#123;&#125;;</span></span><br><span class="line">    Ninja.prototype = &#123;dance:Person.prototype.dance&#125;;</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> ninja = <span class="keyword">new</span> Ninja();</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(ninja <span class="keyword">instanceof</span> Ninja);</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(ninja <span class="keyword">instanceof</span> Person);</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(ninja <span class="keyword">instanceof</span> <span class="built_in">Object</span>);</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="创建一个原型链"><a href="#创建一个原型链" class="headerlink" title="创建一个原型链"></a><strong>创建一个原型链</strong></h3><p><code>SubClass.prototype = new SuperClass()</code></p>
+<p><code>Ninja.prototype = new Person()</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123; &#125;;</span></span><br><span class="line"><span class="javascript">    Person.prototype.dance = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">Ninja</span>(<span class="params"></span>)</span>&#123;&#125;;</span></span><br><span class="line"><span class="javascript">    Ninja.prototype = <span class="keyword">new</span> Person();</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> ninja = <span class="keyword">new</span> Ninja();</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(ninja <span class="keyword">instanceof</span> Ninja);</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(ninja <span class="keyword">instanceof</span> Person);</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(ninja <span class="keyword">instanceof</span> <span class="built_in">Object</span>);</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>通过HTMLElement的原型，给元素添加一个新方法</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">    HTMLElement.prototype.remove = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span> (<span class="built_in">this</span>.parentNode) <span class="built_in">this</span>.parentNode.removeChild(<span class="built_in">this</span>);</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> a = <span class="built_in">document</span>.getElementById(<span class="string">&quot;a&quot;</span>);</span></span><br><span class="line">    a.parentNode.removeChild(a);</span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.getElementById(<span class="string">&quot;b&quot;</span>).remove();</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(!<span class="built_in">document</span>.getElementById(<span class="string">&quot;a&quot;</span>));</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(!<span class="built_in">document</span>.getElementById(<span class="string">&quot;b&quot;</span>));</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="陷阱"><a href="#陷阱" class="headerlink" title="陷阱"></a>陷阱</h3><h4 id="给Object原型添加额外属性会发生的行为"><a href="#给Object原型添加额外属性会发生的行为" class="headerlink" title="给Object原型添加额外属性会发生的行为"></a>给Object原型添加额外属性会发生的行为</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">Object</span>.prototype.keys = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> keys = [];</span></span><br><span class="line"><span class="javascript">        <span class="keyword">for</span>(<span class="keyword">var</span> p <span class="keyword">in</span> <span class="built_in">this</span>) keys.push(p);</span></span><br><span class="line"><span class="javascript">        <span class="keyword">return</span> keys;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> obj = &#123;<span class="attr">a</span>:<span class="number">1</span>,<span class="attr">b</span>:<span class="number">2</span>,<span class="attr">c</span>:<span class="number">3</span>&#125;;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(obj.keys().length);<span class="comment">//结果返回了4</span></span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>使用hasOwnProperty进行修改</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">Object</span>.prototype.keys = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> keys = [];</span></span><br><span class="line"><span class="javascript">        <span class="keyword">for</span>(<span class="keyword">var</span> p <span class="keyword">in</span> <span class="built_in">this</span>) </span></span><br><span class="line"><span class="javascript">            <span class="keyword">if</span>(<span class="built_in">this</span>.hasOwnProperty(p)) keys.push(p);</span></span><br><span class="line"><span class="javascript">        <span class="keyword">return</span> keys;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> obj = &#123;<span class="attr">a</span>:<span class="number">1</span>,<span class="attr">b</span>:<span class="number">2</span>,<span class="attr">c</span>:<span class="number">3</span>&#125;;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(obj.keys().length);<span class="comment">//结果返回了4</span></span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="扩展数字"><a href="#扩展数字" class="headerlink" title="扩展数字"></a>扩展数字</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">Number</span>.prototype.add = <span class="function"><span class="keyword">function</span>(<span class="params">num</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">return</span> <span class="built_in">this</span>+num;</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> n = <span class="number">5</span>;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(n.add(<span class="number">3</span>));</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log((<span class="number">5</span>).add(<span class="number">3</span>));</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="number">5.</span>add(<span class="number">3</span>));<span class="comment">//报错，因为语法解析器不能处理字面量的情况</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> Person  =<span class="built_in">Object</span>.subClass(&#123;</span></span><br><span class="line"><span class="javascript">        init:<span class="function"><span class="keyword">function</span>(<span class="params">isDancing</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">this</span>.dancing =  isDancing;</span></span><br><span class="line">        &#125;,</span><br><span class="line"><span class="javascript">        dance:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">return</span> <span class="built_in">this</span>.dancing;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> Ninja = Person.subClass(&#123;</span></span><br><span class="line"><span class="javascript">        init:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">this</span>._super(<span class="literal">false</span>);</span></span><br><span class="line">        &#125;,</span><br><span class="line"><span class="javascript">        dance:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">return</span> <span class="built_in">this</span>._super();    </span></span><br><span class="line">        &#125;,</span><br><span class="line"><span class="javascript">        swingSword:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">return</span> <span class="literal">true</span>;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> person = <span class="keyword">new</span> Person(<span class="literal">true</span>);</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(person.dance());</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> ninja = <span class="keyword">new</span> Ninja();</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(ninja.dance());</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(ninja.swingSword());</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(person <span class="keyword">instanceof</span> Person);</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(ninja <span class="keyword">instanceof</span> Ninja);</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(ninja <span class="keyword">instanceof</span> Person);</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><h2 id="驯服线程和定时器"><a href="#驯服线程和定时器" class="headerlink" title="驯服线程和定时器"></a>驯服线程和定时器</h2><h3 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h3><p>定时器的操作方法</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>格式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>setTimeout</td>
+<td>id = setTimeout(fn,delay)</td>
+<td>启动一个定时器，在一段时间delay之后执行传入的callback，并返回该定时器的唯一标识</td>
+</tr>
+<tr>
+<td>clearTimeout</td>
+<td>clearTimeout(id)</td>
+<td>如果定时器还未触发，则可取消该定时器</td>
+</tr>
+<tr>
+<td>setInterval</td>
+<td>id = setInterval(fn,delay)</td>
+<td>启动一个定时器，在每隔一段时间delay之后都执行传入的callback，并返回该定时器的唯一标识</td>
+</tr>
+<tr>
+<td>clearInterval</td>
+<td>clearInterval(id)</td>
+<td>传入间隔定时器标识，取消间隔定时器</td>
+</tr>
+</tbody></table>
+<h2 id="运行时代码求值"><a href="#运行时代码求值" class="headerlink" title="运行时代码求值"></a>运行时代码求值</h2><blockquote>
+<ul>
+<li><p>运行时代码求值如何工作的</p>
+</li>
+<li><p>代码求值的不同技术</p>
+</li>
+<li><p>在应用程序中代码求值</p>
+</li>
+<li><p>函数反编译</p>
+</li>
+<li><p>命名空间</p>
+</li>
+<li><p>压缩与混淆</p>
+</li>
+</ul>
+</blockquote>
+<ol>
+<li>求值方式包括<ul>
+<li>eval()函数</li>
+<li>函数构造器</li>
+<li>定时器</li>
+<li><code>&lt;script&gt;</code>元素</li>
+</ul>
+</li>
+<li></li>
+</ol>
+<h2 id="with语句"><a href="#with语句" class="headerlink" title="with语句"></a>with语句</h2><h2 id="开发跨浏览器策略"><a href="#开发跨浏览器策略" class="headerlink" title="开发跨浏览器策略"></a>开发跨浏览器策略</h2><h2 id="洞悉特性、属性和样式"><a href="#洞悉特性、属性和样式" class="headerlink" title="洞悉特性、属性和样式"></a>洞悉特性、属性和样式</h2><h2 id="不老事件"><a href="#不老事件" class="headerlink" title="不老事件"></a>不老事件</h2><h2 id="DOM操作"><a href="#DOM操作" class="headerlink" title="DOM操作"></a>DOM操作</h2><h2 id="CSS选择器引擎"><a href="#CSS选择器引擎" class="headerlink" title="CSS选择器引擎"></a>CSS选择器引擎</h2>
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2021/02/17/JavaScript%E5%BF%8D%E8%80%85%E7%A7%98%E7%B1%8D/" title="JavaScript忍者秘籍" target="_blank" rel="external">http://example.com/2021/02/17/JavaScript%E5%BF%8D%E8%80%85%E7%A7%98%E7%B1%8D/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/YukiXueyan" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/YukiXueyan" target="_blank"><span class="text-dark">YukiXueyan</span><small class="ml-1x">一只前端咸鱼酱</small></a></h3>
+        <div>满怀希望就会所向披靡</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2021/02/18/css%E6%8F%AD%E7%A7%98/" title="css揭秘读书笔记"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2021/02/11/JavaScriptDOM/" title="JavaScriptDOM"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/YukiXueyan" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '100' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
