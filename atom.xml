@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-05-05T06:29:58.002Z</updated>
+  <updated>2021-05-11T15:23:41.596Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,18 +17,20 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>hexo主题推荐</title>
+    <title>关于我用过的那些hexo主题</title>
     <link href="http://example.com/2021/05/04/hexo%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/"/>
     <id>http://example.com/2021/05/04/hexo%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</id>
     <published>2021-05-04T11:22:49.000Z</published>
-    <updated>2021-05-05T06:29:58.002Z</updated>
+    <updated>2021-05-11T15:23:41.596Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="简约型主题"><a href="#简约型主题" class="headerlink" title="简约型主题"></a>简约型主题</h2><h3 id="pure"><a href="#pure" class="headerlink" title="pure"></a>pure</h3><p>pure也就是我现在正在用的主题啦。三栏式布局非常简单，一目了然。可以直观看到文章、分类、标签等。配置也很方便。同时也支持各种插件，让博客具有更多功能。</p><p><a href="https://github.com/cofess/hexo-theme-pure">项目地址</a>   <a href="https://blog.cofess.com/">主题预览</a><br><img src="/.com//blog_pure.png" alt="blog_pure"></p>]]></content>
+    <content type="html"><![CDATA[<!-- ## 简约型主题 --><h3 id="pure"><a href="#pure" class="headerlink" title="pure"></a>pure</h3><p>pure也就是我现在正在用的主题啦。三栏式布局非常简单，一目了然。可以直观看到文章、分类、标签等。配置也很方便。同时也支持各种插件，让博客具有更多功能。</p><p><a href="https://github.com/cofess/hexo-theme-pure">项目地址</a>   <a href="https://blog.cofess.com/">主题预览</a><br><img src="https://raw.githubusercontent.com/cofess/hexo-theme-pure/master/screenshot/pure.png" alt="blog_pure"></p><h3 id="3-hexo"><a href="#3-hexo" class="headerlink" title="3-hexo"></a>3-hexo</h3><p>三段式页面，分为导览、文章列表、正文内容三个部分。</p><p><a href="https://github.com/yelog/hexo-theme-3-hexo">项目地址</a>   <a href="https://yelog.org/">主题预览</a><br><img src="https://camo.githubusercontent.com/29043b409f5cf2a26b83d3a590a8da72b776a889dd955a8fe8af09000e3f7be7/687474703a2f2f696d672e73616f646979616e672e636f6d2f466c32746c314973357a782d44304441743033626730576b5758684f2e706e67" alt="blog_pure"></p><h3 id="matery"><a href="#matery" class="headerlink" title="matery"></a>matery</h3><p>这个主题有明亮多彩的颜色，置于顶部的菜单栏。对自定义样式的支持十分友好。进入界面就是一个很大的壁纸，可以设置格言、推荐文章之类。瀑布流式的博客文章列表（文章无特色图片时会有 24 张漂亮的图片代替）也很特别。</p><p><a href="https://github.com/blinkfox/hexo-theme-matery">项目地址</a>   <a href="http://blinkfox.com/">主题预览</a><br><img src="https://camo.githubusercontent.com/ca91ff24a662fc02f64cfed3446fadc7d84dade01a698ebe3dd7b3710926489a/687474703a2f2f7374617469632e626c696e6b666f782e636f6d2f6d61746572792d32303138313230322d312e706e67" alt="blog_matery"></p><p><img src="https://camo.githubusercontent.com/a19a106d92f07d240643dfb8a2712fd0b2271d3dd6e24300732f2d96aac98393/687474703a2f2f7374617469632e626c696e6b666f782e636f6d2f6d61746572792d32303138313230322d332e706e67" alt="blog_matery2"></p><h3 id="yun"><a href="#yun" class="headerlink" title="yun"></a>yun</h3><p>一个特别可爱的主题。<br>蓝白的设计很简洁。整体色调比较统一。也是两栏式的布局。在进入界面时也会展示一页的格言之类。鼠标点击可以产生特效。<br>还有夜间模式。<br>重点是它很轻量，加载速度挺快的！<br><a href="https://github.com/YunYouJun/hexo-theme-yun">项目地址</a>   <a href="https://www.yunyoujun.cn/">主题预览</a></p><!-- ![blog_matery](https://camo.githubusercontent.com/ca91ff24a662fc02f64cfed3446fadc7d84dade01a698ebe3dd7b3710926489a/687474703a2f2f7374617469632e626c696e6b666f782e636f6d2f6d61746572792d32303138313230322d312e706e67) --><p>以上是我用过的且印象比较深刻的hexo主题啦。每次换新主题就像买到好看的新衣服一样。不同的主题各有各的漂亮~</p>]]></content>
     
     
       
       
-    <summary type="html">&lt;h2 id=&quot;简约型主题&quot;&gt;&lt;a href=&quot;#简约型主题&quot; class=&quot;headerlink&quot; title=&quot;简约型主题&quot;&gt;&lt;/a&gt;简约型主题&lt;/h2&gt;&lt;h3 id=&quot;pure&quot;&gt;&lt;a href=&quot;#pure&quot; class=&quot;headerlink&quot; title=&quot;pure&quot;</summary>
+    <summary type="html">&lt;!-- ## 简约型主题 --&gt;
+
+&lt;h3 id=&quot;pure&quot;&gt;&lt;a href=&quot;#pure&quot; class=&quot;headerlink&quot; title=&quot;pure&quot;&gt;&lt;/a&gt;pure&lt;/h3&gt;&lt;p&gt;pure也就是我现在正在用的主题啦。三栏式布局非常简单，一目了然。可以直观看到文章、分</summary>
       
     
     
